@@ -41,6 +41,9 @@ Mobile first app.
 - Socket io for messages between users
 - NextAuth.js for authentication
 
+**Database Structure:**
+![database structure](friendsWithTools_DB.png)
+
 **Testing**
 
 - Front end with Jest & Testing Library
