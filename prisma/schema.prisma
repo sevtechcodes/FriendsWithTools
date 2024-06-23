@@ -12,3 +12,47 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id            String     @id @default(dbgenerated("uuid_generate_v4()"))
+  name          String
+  lastName      String
+  email         String     @unique
+  profilePicture String
+  conversations Conversation[]
+  reviews       ToolsReviews[]
+}
+
+model ToolCard {
+  id         String  @id @default(dbgenerated("uuid_generate_v4()"))
+  name       String
+  description String
+  location   String
+  dailyRate  Int
+  weeklyRate Int
+  monthlyRate Int
+  picture    String
+}
+
+model ToolsReviews {
+  id       String    @id @default(dbgenerated("uuid_generate_v4()"))
+  content  String
+  createdAt DateTime
+  author   User      @relation(fields: [_authorId], references: [id])
+  _authorId String
+}
+
+model Conversation {
+  id       String      @id @default(dbgenerated("uuid_generate_v4()"))
+  sender   User        @relation(fields: [_senderId], references: [id])
+  _senderId String
+  messages Message[]
+}
+
+model Message {
+  id        String   @id @default(dbgenerated("uuid_generate_v4()"))
+  content   String
+  createdAt DateTime
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+}
