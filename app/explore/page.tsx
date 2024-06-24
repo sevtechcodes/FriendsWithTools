@@ -59,7 +59,8 @@ const ToolsPage = () => {
 					<h1>Available Tools</h1>
 					<div className="tool-list">
 							{tools.map(tool => (
-									<div key={tool._id} className="tool-item">
+									<div key={tool._id} className="tool-item"
+									>
 											<ToolCardComponent tool={tool} />
 									</div>
 							))}

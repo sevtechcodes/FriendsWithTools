@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-const Liked = () => {
-	return (
-		<div>
-			<div className="favorite-icon">❤️</div>
-		</div>
-	)
-}
+const Liked: React.FC = () => {
+  const [isLiked, setIsLiked] = useState<boolean>(false);
 
-export default Liked
+  const handleLike = () => {
+    setIsLiked(!isLiked); // Toggle the isLiked state
+  };
+
+  return (
+    <div>
+      <div className="favorite-icon" onClick={handleLike}>
+        {isLiked ? '❤️' : '🤍'}
+      </div>
+    </div>
+  );
+};
+
+export default Liked;
