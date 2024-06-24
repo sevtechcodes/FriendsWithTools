@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import {
   MagnifyingGlassIcon,
@@ -7,39 +8,59 @@ import {
   UserIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const NavBar = () => {
+  const currentPath = usePathname();
+
   return (
-    <div className='fixed inset-x-0 bottom-0 border-t-2 h-20'>
+    <div className=' fixed inset-x-0 bottom-0 border-t  border-grey h-20 shadow-md'>
       <div className='flex justify-around items-center h-full p-4'>
         <Link href='/explore'>
           <MagnifyingGlassIcon
-            style={{ color: 'var(--gray)' }}
-            className='size-8 hover:text-light-green-500'
+            className={
+              currentPath === '/explore'
+                ? 'size-8 stroke-darkGreen stroke-2'
+                : 'size-8 stroke-grey stroke-2'
+            }
           />
         </Link>
-        <Link href='/whishlist'>
+        <Link href={'/whishlist'}>
+          {/* test */}
           <HeartIcon
-            style={{ color: 'var(--gray)' }}
-            className='size-8 hover:text-light-green-500'
+            className={
+              currentPath === '/whishlist'
+                ? 'size-8 stroke-darkGreen stroke-2'
+                : 'size-8 stroke-grey stroke-2'
+            }
           />
         </Link>
+
         <Link href='/rented'>
           <WrenchScrewdriverIcon
-            style={{ color: 'var(--gray)' }}
-            className='size-8 hover:text-light-green-500'
+            className={
+              currentPath === '/rented'
+                ? 'size-8 stroke-darkGreen stroke-2'
+                : 'size-8 stroke-grey stroke-2'
+            }
           />
         </Link>
         <Link href='/inbox'>
           <EnvelopeIcon
-            style={{ color: 'var(--gray)' }}
-            className='size-8 hover:text-light-green-500'
+            className={
+              currentPath === '/inbox'
+                ? 'size-8 stroke-darkGreen stroke-2'
+                : 'size-8 stroke-grey stroke-2'
+            }
           />
         </Link>
         <Link href='/user'>
           <UserIcon
-            style={{ color: 'var(--gray)' }}
-            className='size-8 hover:text-light-green-500'
+            className={
+              currentPath === '/user'
+                ? 'size-8 stroke-darkGreen stroke-2'
+                : 'size-8 stroke-grey stroke-2'
+            }
           />
         </Link>
       </div>

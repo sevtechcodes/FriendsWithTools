@@ -11,6 +11,17 @@ const config: Config = {
       sm: '430px',
       // => @media (min-width: 430px) iPhone 14 max pro
     },
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      white: '#ffffff',
+      black: '#000000',
+      grey: '#808080',
+      lightGreen: '#189c8c',
+      darkGreen: '#106e60',
+      chatBlue: '#104d77',
+      chatGreen: '#106e31',
+    },
 
     extend: {
       backgroundImage: {
