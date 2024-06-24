@@ -24,3 +24,6 @@ body {
   color: rgb(var(--black));
   background: rgb(var(--white));
 }
+
+@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+}
