@@ -8,11 +8,14 @@ const Liked = () => {
   const handleLike = () => {
     setIsLiked(!isLiked); // Toggle the isLiked state
 		//TODO If liked send make it available on my Wishlist
-  };
+			// if (!liked) {
+			// 	addToWishlist(tool);
+			// }
+		};
 
   return (
     <div>
-      <div className="favorite-icon" onClick={handleLike}>
+      <div className="absolute top-2 right-2 cursor-pointer text-2xl" onClick={handleLike}>
         {isLiked ? '❤️' : '🤍'}
       </div>
     </div>
