@@ -1,52 +1,47 @@
-// components/ToolCard.tsx
 import React from 'react';
 import Image from 'next/image';
 import { ToolCard as ToolType } from '../lib/types';
 import Liked from './Liked';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-
-
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface ToolCardProps {
   tool: ToolType;
 }
 
-const ToolCardComponent: React.FC<ToolCardProps> = ({ tool }) => {
+const ToolCardComponent =  ( { tool }: ToolCardProps ) => {
+  const defaultImage = '/placeholder.png'; // Path to your placeholder image
+
   return (
-		<div className="bg-teal-100 mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-      <div className="group relative">
-				<div className="tool-card"  >
-					<Liked></Liked>
-					<div className="tool-image">
-			
-					<Image
-							src={tool.picture}
-							alt={tool.name}
-							width={200}
-							height={200}
-						/>
-					</div>
-					<div className="tool-details">
-						<h1>{tool.name}</h1>
-						<h2>{tool.location}</h2>
-						<h2>Owned by: {tool.ownerId}</h2>
-						<Avatar>
+    <div className="bg-green p-4 rounded-lg shadow-md flex flex-col items-center m-8">
+			<Liked />
+      <div className="relative w-64 h-48 md:rounded-lg">
+				
+        <Image
+          className=""
+          src={tool.picture || defaultImage}
+          alt=""
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
+
+
+			<div className="grid grid-cols-2 gap-20">
+					<div className="mt-4 text-center flex flex-col items-left">
+						<p className="text-lg font-semibold">{tool.name}</p>
+						<p className="text-gray-600">{tool.location}</p>
+						<h2 className="text-gray-600">{tool.ownerId}</h2>
+						{/* <Avatar className="mt-2">
 							<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
 							<AvatarFallback>CN</AvatarFallback>
-						</Avatar>
-						<p className="text-sm font-medium text-gray-900">${tool.dailyRate}</p>
-						<p className="mt-1 text-sm text-gray-500">Available: {tool.available ? 'Yes' : 'No'}</p>
+						</Avatar> */}
 					</div>
-				</div>
+					<div><span className="flex items-right"><h1 className="text-xlg font-semibold text-gray-900 mt-2">${tool.dailyRate}</h1></span></div>
+			</div>
 
 
-
-
+			
     </div>
-  </div>
-
-
-
   );
 };
 

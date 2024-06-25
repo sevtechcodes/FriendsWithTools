@@ -17,9 +17,9 @@ export type ToolCard = {
   description: string;
   location: string;
   dailyRate: number;
-  weeklyRate: number;
-  monthlyRate: number;
-  picture: string;
+  weeklyRate?: number;
+  monthlyRate?: number;
+  picture?: string;
   liked: boolean;
   available: boolean;
   reviews: ToolsReviews[];

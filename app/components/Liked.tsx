@@ -2,11 +2,12 @@
 'use client'
 import React, { useState } from 'react';
 
-const Liked: React.FC = () => {
+const Liked = () => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
 
   const handleLike = () => {
     setIsLiked(!isLiked); // Toggle the isLiked state
+		//TODO If liked send make it available on my Wishlist
   };
 
   return (
