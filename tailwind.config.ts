@@ -1,7 +1,5 @@
-import type { Config } from "tailwindcss"
-
+import type { Config } from 'tailwindcss';
 const config = {
-
   darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -24,13 +22,13 @@ const config = {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
-        white: '#ffffff',
+        white: '#FFFFFF',
         black: '#000000',
         grey: '#808080',
-        lightGreen: '#189c8c',
-        darkGreen: '#106e60',
-        chatBlue: '#104d77',
-        chatGreen: '#106e31',
+        lightGreen: '#189C8C',
+        darkGreen: '#106E60',
+        chatBlue: '#104D77',
+        chatGreen: '#106E31',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -88,5 +86,4 @@ const config = {
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
-
 export default config;
