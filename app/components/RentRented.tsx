@@ -22,7 +22,7 @@ const RentRented = () => {
         <Button
           className={`w-40 rounded-none px-4 py-2 ${
             selectedButton === 1 ? 'text-white bg-darkGreen' : 'bg-grey'
-          } focus:outline-none`}
+          } focus:outline-none sm:bg-customGreen md:bg-lightGreen`}
           onClick={() => handleClick(1)}
         >
           My Requests
