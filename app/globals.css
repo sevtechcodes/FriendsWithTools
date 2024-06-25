@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --white: 255, 255, 255;
-  --black: 0, 0, 0;
-  --gray: 128, 128, 128;
-  --light-green: 24, 156, 140;
-  --dark-green: 16, 110, 96;
-  --chat-blue: 16, 77, 110;
-  --chat-green: 16, 110, 49;
+  --white: rgba(255, 255, 255);
+  --black: rgba(0, 0, 0);
+  --gray: rgba(128, 128, 128);
+  --light-green: rgba(24, 156, 140);
+  --dark-green: rgba(16, 110, 96);
+  --chat-blue: rgba(16, 77, 110);
+  --chat-green: rgba(16, 110, 49);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +23,7 @@
 body {
   color: rgb(var(--black));
   background: rgb(var(--white));
+}
+
+@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
 }
