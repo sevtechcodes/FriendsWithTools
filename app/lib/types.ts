@@ -31,7 +31,7 @@ export type ToolCategory = {
   _id: string;
   categoryName: string;
   tools: ToolCard[];
-}
+};
 
 export type ToolsReviews = {
   _id: string;
@@ -56,4 +56,4 @@ export type Message = {
   author: User;
   conversationId: string;
   conversation: Conversation;
-}
+};

@@ -1,17 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
-import ToolCardComponent from './ToolCard';
 
 interface ToolListItemProps {
     tool: { id: string; name: string;};
 }
 
-const ToolListItem: React.FC<ToolListItemProps> = ({ tool }): Too => {
+const ToolListItem: React.FC<ToolListItemProps> = ({ tool }) => {
     return (
         <div>
             <h3>{tool.name}</h3>
             <Link href={`/tools/${tool.id}`}>
-                <ToolCardComponent tool={tool} />
+                <a>View Details</a>
             </Link>
         </div>
     );

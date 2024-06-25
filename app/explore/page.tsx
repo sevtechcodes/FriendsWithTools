@@ -3,7 +3,6 @@ import React from 'react';
 import Link from 'next/link';
 import { ToolCard, ToolsReviews } from '../lib/types';
 import ToolCardComponent from '../components/ToolCard';
-import MyToolComponent from '../components/ToolCard';
 
 const ToolsPage = () => {
 	const tools: ToolCard[] = [
@@ -72,5 +71,4 @@ const ToolsPage = () => {
 			</div>
 	);
 }
-
 export default ToolsPage;

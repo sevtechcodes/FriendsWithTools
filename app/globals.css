@@ -2,10 +2,22 @@
   @tailwind components;
   @tailwind utilities;
 
+<<<<<<< HEAD
   @layer base {
     :root {
       --background: 0 0% 100%;
       --foreground: 222.2 84% 4.9%;
+=======
+:root {
+  --white: rgba(255, 255, 255);
+  --black: rgba(0, 0, 0);
+  --gray: rgba(128, 128, 128);
+  --light-green: rgba(24, 156, 140);
+  --dark-green: rgba(16, 110, 96);
+  --chat-blue: rgba(16, 77, 110);
+  --chat-green: rgba(16, 110, 49);
+}
+>>>>>>> 26d9cd93d0b6f66c5410795b0e13eb57258a3ef8
 
       --card: 0 0% 100%;
       --card-foreground: 222.2 84% 4.9%;
