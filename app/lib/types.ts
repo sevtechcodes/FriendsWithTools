@@ -1,3 +1,5 @@
+import { isString } from "util";
+
 export type User = {
   _id: string;
   name: string;
@@ -29,7 +31,7 @@ export type ToolCard = {
 
 export type ToolCategory = {
   _id: string;
-  categoryName: string;
+  categoryName?: string;
   tools: ToolCard[];
 }
 
