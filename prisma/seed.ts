@@ -3,9 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { User, ToolCard, ToolCategory, ToolsReviews, Conversation, Message } from '@/app/lib/types';
 import prisma from './db';
 
-
-
-
 // Define your Prisma client instance
 // const prisma = new PrismaClient();
 
@@ -52,7 +49,7 @@ async function main() {
 
   const toolCards: ToolCard[] = [
     {
-      _id: uuidv4(),
+      id: uuidv4(),
       name: 'Drill Machine',
       description: 'Powerful drilling tool for professional use.',
       location: 'Warehouse A',
@@ -67,7 +64,7 @@ async function main() {
       toolCategoryId: toolCategories[0]._id
     },
     {
-      _id: uuidv4(),
+      id: uuidv4(),
       name: 'Lawn Mower',
       description: 'Electric lawn mower for small to medium lawns.',
       location: 'Garden Shed',
@@ -89,14 +86,14 @@ async function main() {
       authorId: users[0]._id,
       content: 'Great drill, very powerful!',
       createdAt: new Date(),
-      toolCardId: toolCards[0]._id
+      toolCardId: toolCards[0].id
     },
     {
       _id: uuidv4(),
       authorId: users[1]._id,
       content: 'Efficient lawn mower, easy to use.',
       createdAt: new Date(),
-      toolCardId: toolCards[1]._id
+      toolCardId: toolCards[1].id
     }
   ];
 
@@ -136,7 +133,6 @@ async function main() {
     }
   ];
 
-  // Using Prisma to seed data
   for (const user of users) {
     await prisma.user.create({
       data: {
@@ -159,7 +155,7 @@ async function main() {
         tools: {
           createMany: {
             data: category.tools.map(tool => ({
-              id: tool._id,
+              id: tool.id,
               name: tool.name,
               description: tool.description,
               location: tool.location,
@@ -181,7 +177,7 @@ async function main() {
   for (const tool of toolCards) {
     await prisma.toolCard.create({
       data: {
-        id: tool._id,
+        id: tool.id,
         name: tool.name,
         description: tool.description,
         location: tool.location,
