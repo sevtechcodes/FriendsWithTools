@@ -2,7 +2,7 @@ import React from 'react';
 import { ToolCard as ToolType } from '../lib/types';
 import Liked from './Liked';
 
-interface ToolCardProps {
+export interface ToolCardProps {
   tool: ToolType;
 }
 

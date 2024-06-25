@@ -99,23 +99,6 @@ const ToolsPage = () => {
 			toolCategoryId: 'category1',
 	}
 	];
-
-	// return (
-	// 		<div>
-	// 				<h1>Available Tools</h1>
-	// 				<Link href={`/tools`}>
-	// 					<div className="tool-list">
-	// 							{tools.map(tool => (
-	// 									<div key={tool._id} className="tool-item"
-	// 									>
-	// 										<ToolCardComponent tool={tool} />
-	// 									</div>
-	// 							))}
-	// 					</div>
-	// 				</Link>
-	// 		</div>
-	// );
-
 	return (
 <div className="container mx-auto px-2 py-2">
       <h1 className="text-2xl font-bold mb-4 text-center">Discover Your Ideal Tool Here!</h1>
