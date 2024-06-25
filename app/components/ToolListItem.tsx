@@ -1,19 +1,41 @@
-import React from 'react';
-import Link from 'next/link';
+// components/Test.tsx
 
-interface ToolListItemProps {
-    tool: { id: string; name: string;};
+import React from 'react';
+import { ToolCard } from '../lib/types';
+// type ToolCard = {
+//   id: string;
+//   name: string;
+//   description: string;
+//   location: string;
+//   dailyRate: number;
+//   weeklyRate: number;
+//   monthlyRate: number;
+//   picture: string | null; 
+//   liked: boolean;
+//   available: boolean;
+//   // reviews: []; 
+//   ownerId: string;
+//   toolCategoryId: string;
+// };
+
+interface Props {
+  tools: ToolCard[];
 }
 
-const ToolListItem: React.FC<ToolListItemProps> = ({ tool }) => {
-    return (
-        <div>
+function ToolListItem({ tools }: Props) {
+    console.log('Received tools:', tools);
+  return (
+    <div>
+      <h2>Tools List</h2>
+      <ul>
+        {tools.map(tool => (
+          <li key={tool.id}>
             <h3>{tool.name}</h3>
-            <Link href={`/tools/${tool.id}`}>
-                <a>View Details</a>
-            </Link>
-        </div>
-    );
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default ToolListItem;

@@ -14,7 +14,7 @@ export type User = {
 };
 
 export type ToolCard = {
-  _id: string;
+  id: string;
   name: string;
   description: string;
   location: string;
@@ -33,7 +33,7 @@ export type ToolCategory = {
   _id: string;
   categoryName?: string;
   tools: ToolCard[];
-}
+};
 
 export type ToolsReviews = {
   _id: string;
@@ -58,4 +58,4 @@ export type Message = {
   author: User;
   conversationId: string;
   conversation: Conversation;
-}
+};
