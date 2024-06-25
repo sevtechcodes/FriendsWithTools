@@ -16,10 +16,10 @@ const NavBar = () => {
   return (
     <div className=' fixed inset-x-0 bottom-0 border-t  border-grey h-20 shadow-md'>
       <div className='flex justify-around items-center h-full p-4'>
-        <Link href='/explore'>
+        <Link href='/'>
           <MagnifyingGlassIcon
             className={
-              currentPath === '/explore'
+              currentPath === '/'
                 ? 'size-8 stroke-darkGreen stroke-2'
                 : 'size-8 stroke-grey stroke-2'
             }
