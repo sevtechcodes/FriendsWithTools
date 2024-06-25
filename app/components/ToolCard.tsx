@@ -9,7 +9,7 @@ interface ToolCardProps {
 const ToolCardComponent =  ( { tool }: ToolCardProps ) => {
   const defaultImage = 'https://shorturl.at/PyeKu' //place holder image
   return (
-    <div className=" border-slate-50 p-6 rounded-xl shadow-md flex flex-col items-center m-8">
+    <div className=" border-slate-50 border-4 p-6 rounded-xl shadow-md flex flex-col items-center m-8">
       <div className="relative h-64 rounded-m overflow-hidden nset-0 bg-cover w-80 bg-center " 
 			style={{ backgroundImage: `url(${tool.picture || defaultImage})` }}>
         <Liked />
