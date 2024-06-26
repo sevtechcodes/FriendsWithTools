@@ -12,10 +12,10 @@ const RentedPage = () => {
       <div>
         <RentRented />
         <div className='flex justify-centre items-centre mb-30 fixed'>
-      <Link href={`/form`} >
-      <PlusCircleIcon className='z-50 w-20 h-20'/>
-      </Link>
-       </div>
+          <Link href={'/form'} >
+            <PlusCircleIcon className='z-50 w-20 h-20'/>
+          </Link>
+        </div>
       </div >
     </div>
   );
