@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-
-const SearchBar = () => {
-  return <div>SearchBar</div>;
-=======
 'use client';
 import React from 'react';
 import { Input } from '@/components/ui/input';
@@ -32,7 +26,6 @@ const SearchBar = () => {
       </div>
     </div>
   );
->>>>>>> 184e280523bfe684eed9b1ced5eb2ca0b0527882
 };
 
 export default SearchBar;
