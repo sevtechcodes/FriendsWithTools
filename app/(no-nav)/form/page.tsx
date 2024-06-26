@@ -1,5 +1,8 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { ToolCategory } from '../../lib/types';
+import { ToolCard } from '../../lib/types';
+import { v4 as uuidv4 } from 'uuid';
 import {
   Select,
   SelectContent,
@@ -8,47 +11,90 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-type FormInput = {
-  name: string;
-  product: string;
-  location: string;
-  dailyRate: number;
-  weeklyRate?: number;
-  monthlyRate?: number;
-  picture?: string;
-  liked: boolean;
-  available: boolean;
-};
+// type FormInput = {
+//   name: string;
+//   description: string;
+//   location: string;
+//   dailyRate: number;
+//   weeklyRate?: number;
+//   monthlyRate?: number;
+//   picture?: string;
+//   liked: boolean;
+//   available: boolean;
+//   ownerId: string;
+// };
 
 const Form = () => {
-  const [input, setInput] = useState<FormInput>({
+  const [input, setInput] = useState<ToolCard>({
     name: '',
-    product: '',
+    description: '',
     location: '',
     dailyRate: 0,
     liked: false,
-    available: false,
+    available: true,
+    ownerId: 'f4bb67e8-bcc9-4498-ade3-7cce2b8d65ce',
+    id: uuidv4(),
+    reviews: [],
+    toolCategoryId: '5d20758d-db49-45b6-a9a6-fff4085d5804',
   });
+  const [categories, setCategory] = useState<ToolCategory[]>([]);
 
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        const response = await fetch('/api/categories');
+        const data: ToolCategory[] = await response.json();
+        setCategory(data);
+      } catch (error) {
+        console.error('Failed to fetch categories:', error);
+      }
+    };
+
+    fetchCategory();
+  }, []);
+  console.log(categories);
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = event.target;
-    setInput((prevData) => ({ ...prevData, [name]: value }));
+    setInput((prevData) => ({
+      ...prevData,
+      [name]:
+        name === 'dailyRate' || name === 'weeklyRate' || name === 'monthlyRate'
+          ? parseInt(value)
+          : value,
+    }));
   };
 
   const handleSelectChange = (name: string, value: string) => {
-    setInput((prevData) => ({ ...prevData, [name]: value === 'true' }));
+    setInput((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log(input);
+    const data = {
+      ...input,
+    };
+
+    try {
+      const response = await fetch('/api/form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const responseData = await response.json();
+      console.log('API response:', responseData);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
 
   return (
-    <div className='flex content-center  '>
+    <div className='flex justify-center items-center'>
       <div className='w-full max-w-xs'>
         <div>
           <h1>Hello</h1>
@@ -70,16 +116,16 @@ const Form = () => {
             onChange={handleChange}
             required
           />
-          <label htmlFor='product' className='mb-1'>
+          <label htmlFor='description' className='mb-1'>
             Product Description
           </label>
           <input
             className='mb-4 border-b-2'
-            id='product'
-            name='product'
+            id='description'
+            name='description'
             type='text'
             placeholder='Describe your product'
-            value={input.product}
+            value={input.description}
             onChange={handleChange}
             required
           />
@@ -148,39 +194,25 @@ const Form = () => {
             </button>
           </div>
           <div className='flex flex-row justify-between'>
-            <label htmlFor='liked' className='mb-1'>
-              Liked
+            <label htmlFor='category' className='mb-1'>
+              Category
             </label>
             <Select
-              onValueChange={(value) => handleSelectChange('liked', value)}
+              onValueChange={(value) => handleSelectChange('category', value)}
             >
               <SelectTrigger className='w-[180px]'>
-                <SelectValue placeholder='Like' />
+                <SelectValue placeholder='Pick a category' />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='true'>True</SelectItem>
-                <SelectItem value='false'>False</SelectItem>
-              </SelectContent>
+              {/* <SelectContent>
+                {categories.map((category) => (
+                  <SelectItem key={category._id} value={category._id}>
+                    {category.categoryName}
+                  </SelectItem>
+                ))}
+              </SelectContent> */}
             </Select>
           </div>
-          <div className='flex flex-row justify-between'>
-            <label htmlFor='available' className='mb-1'>
-              Available
-            </label>
-            <Select
-              onValueChange={(value: string) =>
-                handleSelectChange('available', value)
-              }
-            >
-              <SelectTrigger className='w-[180px]'>
-                <SelectValue placeholder='Available' />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='true'>True</SelectItem>
-                <SelectItem value='false'>False</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+
           <div>
             <button
               type='submit'
