@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ToolCategory } from '../../lib/types';
 import { ToolCard } from '../../lib/types';
 import { v4 as uuidv4 } from 'uuid';
+import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import {
   Select,
   SelectContent,
@@ -10,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import Link from 'next/link';
 
 // type FormInput = {
 //   name: string;
@@ -97,7 +99,9 @@ const Form = () => {
     <div className='flex justify-center items-center'>
       <div className='w-full max-w-xs'>
         <div>
-          <h1>Hello</h1>
+          <Link href='/rented'>
+            <ChevronLeftIcon className='h-4 w-4' />
+          </Link>
         </div>
         <form
           onSubmit={handleSubmit}
@@ -203,13 +207,13 @@ const Form = () => {
               <SelectTrigger className='w-[180px]'>
                 <SelectValue placeholder='Pick a category' />
               </SelectTrigger>
-              {/* <SelectContent>
+              <SelectContent>
                 {categories.map((category) => (
                   <SelectItem key={category._id} value={category._id}>
                     {category.categoryName}
                   </SelectItem>
                 ))}
-              </SelectContent> */}
+              </SelectContent>
             </Select>
           </div>
 
