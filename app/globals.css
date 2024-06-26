@@ -1,19 +1,9 @@
-@tailwind base;
+  @tailwind base;
   @tailwind components;
   @tailwind utilities;
 
   @layer base {
-
-		:root {
-			--white: rgba(255, 255, 255);
-			--black: rgba(0, 0, 0);
-			--gray: rgba(128, 128, 128);
-			--light-green: rgba(24, 156, 140);
-			--dark-green: rgba(16, 110, 96);
-			--chat-blue: rgba(16, 77, 110);
-			--chat-green: rgba(16, 110, 49);
-		}
-    /* :root {
+    :root {
       --background: 0 0% 100%;
       --foreground: 222.2 84% 4.9%;
 
@@ -43,7 +33,7 @@
       --ring: 222.2 84% 4.9%;
 
       --radius: 0.5rem;
-    } */
+    }
 
     .dark {
       --background: 222.2 84% 4.9%;
