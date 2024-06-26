@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { ChevronLeftIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
+import { ChevronLeftIcon, PaperAirplaneIcon} from '@heroicons/react/24/outline';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
