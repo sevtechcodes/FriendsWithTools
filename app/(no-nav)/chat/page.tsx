@@ -13,7 +13,7 @@ export interface ConversationProps {
 //TODO Modify Conversation type & schema to add FK for the tool. 
 //toolId should give access to the tool's 
 //picture, name, dailyrate etc
-
+//TODO write POST method for messages, when posted the chatview messages should re-render to show the new message
 const ChatView = ({ convo }: ConversationProps) => {
     
   const postMessage = () => {
@@ -33,8 +33,12 @@ const ChatView = ({ convo }: ConversationProps) => {
         </div>
       </header>
       <div className='chat-view flex-col overflow-scroll h-[43rem] w-full p-2'>
-        <div className='message-right flex justify-self-end w-fit min-w-[10rem] rounded-md bg-green-100 m-4 p-2'>Hello</div>
-        <div className='message-left flex justify-self-start w-fit min-w-[10rem] rounded-md bg-blue-100 m-4 p-2'>Hello</div>
+        <div className='flex justify-end'> {/* messages from logged user authorId here */}
+          <div className='message-right w-fit min-w-[10rem] rounded-md bg-green-100 m-4 p-2'>Hello</div>
+        </div>
+        <div className='flex justify-start'> {/* messages from other user authorId here */}
+          <div className='message-left  w-fit min-w-[10rem] rounded-md bg-blue-100 m-4 p-2'>Hello</div>
+        </div>
       </div>
       <footer className=' fixed bg-white inset-x-0 bottom-0 border-t  border-grey h-20 shadow-md'>
         <div className="flex w-full max-w-sm items-center space-x-2 mt-5">
