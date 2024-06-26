@@ -8,7 +8,7 @@ import { Conversation } from '../../lib/types';
 
 const InboxPage = () => {
 
-  const [conversations, setConversations] = useState<Conversation[]>();
+  const [conversations, setConversations] = useState<Conversation[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => { 
@@ -42,8 +42,6 @@ const InboxPage = () => {
             <ConvoListItem convo={convo} />
           </li>
         ))}
-        {/*Here map all conversations for user, create a conversation box view for each one, 
-        they should be clickable and navigate to chat view for each (drawer component coming in form the right side)*/}
       </ScrollArea>
       <NavBar />
     </div>
