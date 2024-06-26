@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main>
       <div>
-        <SearchBar />
+        
       </div>
 <<<<<<< HEAD
       <h1>Homepage</h1>
