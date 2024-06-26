@@ -1,8 +1,4 @@
 import type { Config } from 'tailwindcss';
-<<<<<<< HEAD
-
-=======
->>>>>>> 184e280523bfe684eed9b1ced5eb2ca0b0527882
 const config = {
   darkMode: ['class'],
   content: [
@@ -26,15 +22,6 @@ const config = {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
-<<<<<<< HEAD
-        white: '#ffffff',
-        black: '#000000',
-        grey: '#808080',
-        lightGreen: '#189c8c',
-        darkGreen: '#106e60',
-        chatBlue: '#104d77',
-        chatGreen: '#106e31',
-=======
         white: '#FFFFFF',
         black: '#000000',
         grey: '#808080',
@@ -42,7 +29,6 @@ const config = {
         darkGreen: '#106E60',
         chatBlue: '#104D77',
         chatGreen: '#106E31',
->>>>>>> 184e280523bfe684eed9b1ced5eb2ca0b0527882
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -100,9 +86,4 @@ const config = {
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
-<<<<<<< HEAD
-
 export default config;
-=======
-export default config;
->>>>>>> 184e280523bfe684eed9b1ced5eb2ca0b0527882
