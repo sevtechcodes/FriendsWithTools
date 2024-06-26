@@ -2,31 +2,37 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
 const RentRented = () => {
-  const [selectedButton, setSelectedButton] = useState<number | null>(null);
+  const [activeComponent, setActiveComponent] = useState<string | null>(
+    'listedTools'
+  );
 
-  const handleClick = (index: number) => {
-    setSelectedButton(index); // This sets the selected button's index
+  const handleClick = (component: string) => {
+    setActiveComponent(component);
   };
 
   return (
     <div className='flex justify-around items-center'>
       <div>
-        <Button
-          className={`w-40 rounded-none px-4 py-2 ${
-            selectedButton === 0 ? 'text-white bg-lightGreen' : 'bg-grey'
-          } focus:outline-none `}
-          onClick={() => handleClick(0)}
+        <button
+          className={`w-40 rounded-none rounded-tl-lg rounded-bl-lg px-4 py-2    ${
+            activeComponent === 'listedTools'
+              ? 'bg-lightGreen text-white md:hover:bg-darkGreen'
+              : 'bg-gray-200 text-gray-700'
+          }  transition ease-in-out duration-500`}
+          onClick={() => handleClick('listedTools')}
         >
           My Listed Tools
-        </Button>
-        <Button
-          className={`w-40 rounded-none px-4 py-2 ${
-            selectedButton === 1 ? 'text-white bg-darkGreen' : 'bg-grey'
-          } focus:outline-none sm:bg-customGreen md:bg-lightGreen`}
-          onClick={() => handleClick(1)}
+        </button>
+        <button
+          className={`w-40 rounded-none rounded-tr-lg rounded-br-lg px-4 py-2 ${
+            activeComponent === 'myRequests'
+              ? 'bg-lightGreen text-white md:hover:bg-darkGreen'
+              : 'bg-gray-200 text-gray-700'
+          } transition ease-in-out duration-500 `}
+          onClick={() => handleClick('myRequests')}
         >
           My Requests
-        </Button>
+        </button>
       </div>
     </div>
   );
