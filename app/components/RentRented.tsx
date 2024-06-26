@@ -2,6 +2,23 @@ import React, { useState } from 'react';
 import ToolsToRent from './ToolsToRent';
 import MyRequests from './MyRequests';
 
+const tools = [
+  {
+    id: 1,
+    name: 'Hammer',
+    description: 'A sturdy hammer for all your hammering needs.',
+  },
+  {
+    id: 2,
+    name: 'Drill',
+    description: 'A powerful drill for any drilling task.',
+  },
+];
+
+type ToolsToRentProps = {
+  tools: { id: number; name: string; description: string }[];
+};
+
 const RentRented = () => {
   const [activeComponent, setActiveComponent] = useState<string | null>(
     'toolsToRent'
@@ -34,7 +51,7 @@ const RentRented = () => {
         >
           My Requests
         </button>
-        {activeComponent === 'toolsToRent' && <ToolsToRent />}
+        {activeComponent === 'toolsToRent' && <ToolsToRent tools={tools} />}
         {activeComponent === 'myRequests' && <MyRequests />}
       </div>
     </div>
