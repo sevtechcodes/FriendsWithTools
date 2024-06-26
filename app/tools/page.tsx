@@ -1,5 +1,6 @@
 'use client'
 
+<<<<<<< HEAD
 import { useEffect, useState } from 'react';
 import { ToolCard } from '../lib/types';
 import Link from 'next/link';
@@ -143,3 +144,14 @@ export default ToolsPage;
 
 // export default ToolsPage;
 
+=======
+const ToolView = () => {
+    return (
+        <div>
+            <h1>Tool Page</h1>
+        </div>
+    );
+}
+
+export default ToolView;
+>>>>>>> 184e280523bfe684eed9b1ced5eb2ca0b0527882

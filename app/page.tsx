@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 import Link from 'next/link';
 import Image from 'next/image';
 import NavBar from './components/NavBar';
+=======
+
+>>>>>>> 184e280523bfe684eed9b1ced5eb2ca0b0527882
 import SearchBar from './components/SearchBar';
 
 export default function Home() {
@@ -9,6 +13,7 @@ export default function Home() {
       <div>
         <SearchBar />
       </div>
+<<<<<<< HEAD
       <h1>Homepage</h1>
       <nav>
         <ul>
@@ -33,6 +38,9 @@ export default function Home() {
       <div>
         <NavBar />
       </div>
+=======
+      <h1>Explore Page</h1>
+>>>>>>> 184e280523bfe684eed9b1ced5eb2ca0b0527882
     </main>
   );
 }
