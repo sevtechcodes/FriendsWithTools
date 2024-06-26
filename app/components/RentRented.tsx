@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import ToolsToRent from './ToolsToRent';
+import MyRequests from './MyRequests';
 
 const RentRented = () => {
   const [activeComponent, setActiveComponent] = useState<string | null>(
-    'listedTools'
+    'toolsToRent'
   );
 
   const handleClick = (component: string) => {
@@ -15,11 +16,11 @@ const RentRented = () => {
       <div>
         <button
           className={`w-40 rounded-none rounded-tl-lg rounded-bl-lg px-4 py-2    ${
-            activeComponent === 'listedTools'
+            activeComponent === 'toolsToRent'
               ? 'bg-lightGreen text-white md:hover:bg-darkGreen'
               : 'bg-gray-200 text-gray-700'
           }  transition ease-in-out duration-500`}
-          onClick={() => handleClick('listedTools')}
+          onClick={() => handleClick('toolsToRent')}
         >
           My Listed Tools
         </button>
@@ -33,6 +34,8 @@ const RentRented = () => {
         >
           My Requests
         </button>
+        {activeComponent === 'toolsToRent' && <ToolsToRent />}
+        {activeComponent === 'myRequests' && <MyRequests />}
       </div>
     </div>
   );
