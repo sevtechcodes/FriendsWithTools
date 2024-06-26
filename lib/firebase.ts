@@ -9,16 +9,6 @@ const firebaseConfig = {
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 
-
-  // apiKey: "AIzaSyDaTw0YKeupH65ityFNyalSZurZCBS5paE",
-  // authDomain: "friends-with-tools.firebaseapp.com",
-  // projectId: "friends-with-tools",
-  // storageBucket: "friends-with-tools.appspot.com",
-  // messagingSenderId: "404193361474",
-  // appId: "1:404193361474:web:aa22adabb076a0e91df7db",
-  // measurementId: "G-VQ1NMT4M1G"
-
-
 };
 
 const app = initializeApp(firebaseConfig);
