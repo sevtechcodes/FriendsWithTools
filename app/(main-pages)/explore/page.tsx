@@ -104,7 +104,7 @@ const ToolsPage = () => {
       <h1 className='text-2xl font-bold mb-4 text-center'>
         Discover Your Ideal Tool Here!
       </h1>
-      <Link href={`/tools`}>
+      <Link href={'/tools'}>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
           {tools.map((tool) => (
             <div key={tool._id} className='tool-item'>
