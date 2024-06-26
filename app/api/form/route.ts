@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '../../../prisma/db';
 
-export async function POST(request: NextRequest) {
+export async function POST (request: NextRequest) {
   try {
     const addedTool = await request.json();
     const {
