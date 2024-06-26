@@ -34,7 +34,7 @@ const RentRented = () => {
         <button
           className={`w-40 rounded-none rounded-tl-lg rounded-bl-lg px-4 py-2    ${
             activeComponent === 'toolsToRent'
-              ? 'bg-lightGreen text-white md:hover:bg-darkGreen'
+              ? 'bg-darkGreen text-white md:hover:bg-lightGreen'
               : 'bg-gray-200 text-gray-700'
           }  transition ease-in-out duration-500`}
           onClick={() => handleClick('toolsToRent')}
@@ -44,7 +44,7 @@ const RentRented = () => {
         <button
           className={`w-40 rounded-none rounded-tr-lg rounded-br-lg px-4 py-2 ${
             activeComponent === 'myRequests'
-              ? 'bg-lightGreen text-white md:hover:bg-darkGreen'
+              ? 'bg-darkGreen text-white md:hover:bg-lightGreen'
               : 'bg-gray-200 text-gray-700'
           } transition ease-in-out duration-500 `}
           onClick={() => handleClick('myRequests')}
