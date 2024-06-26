@@ -1,9 +1,8 @@
 'use client';
-import React from 'react';
-import Link from 'next/link';
+
 import { useEffect, useState } from 'react';
-import { ToolCard, ToolsReviews } from '../../lib/types';
-import ToolCardComponent from '../../components/ToolCard';
+import { ToolCard } from '../../lib/types';
+import Link from 'next/link';
 
 const ToolsPage = () => {
   const [tools, setTools] = useState<ToolCard[]>([]);
@@ -30,20 +29,28 @@ const ToolsPage = () => {
   }
 
   return (
-    <div className='container mx-auto px-2 py-2'>
-      <h1 className='text-2xl font-bold mb-4 text-center'>
-        Discover Your Ideal Tool Here!
-      </h1>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-        {tools.map((tool) => (
-          <div key={tool.id} className='tool-item'>
+    <div>
+      <h1>Tools</h1>
+      <ul>
+        {tools.map(tool => (
+          <li key={tool.id}>
             <Link href={`/tools/${tool.id}`}>
-              <ToolCardComponent tool={tool} />
+              <h2>{tool.name}</h2>
             </Link>
-          </div>
+            <p>{tool.description}</p>
+            <img src={tool.picture} alt={tool.name} width="200" />
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };
+
 export default ToolsPage;
+
+
+
+
+
+
+

@@ -1,25 +1,52 @@
 import React from 'react';
+import ToolCardComponent from './ToolCard';
+import { ToolCard } from '../lib/types';
 
-type ToolsToRentProps = {
-  tools: {
-    id: number;
-    name: string;
-    description: string;
-  }[];
-};
+interface ToolsToRentProps {
+  tools: ToolCard[];
+}
 
-const ToolsToRent = ({ tools }: ToolsToRentProps) => {
-  console.log('tools', tools);
+const ToolsToRent = ({ tools }: ToolsToRentProps ) => {
   return (
-    <div>
+    <div className="flex flex-wrap justify-center">
       {tools.map((tool) => (
-        <div key={tool.id}>
-          <h2>{tool.name}</h2>
-          <p>{tool.description}</p>
-        </div>
+        <ToolCardComponent key={tool.id} tool={tool} />
       ))}
     </div>
   );
 };
 
 export default ToolsToRent;
+
+
+
+
+
+
+
+
+// import React from 'react';
+
+// type ToolsToRentProps = {
+//   tools: {
+//     id: number;
+//     name: string;
+//     description: string;
+//   }[];
+// };
+
+// const ToolsToRent = ({ tools }: ToolsToRentProps) => {
+//   console.log('tools', tools);
+//   return (
+//     <div>
+//       {tools.map((tool) => (
+//         <div key={tool.id}>
+//           <h2>{tool.name}</h2>
+//           <p>{tool.description}</p>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default ToolsToRent;
