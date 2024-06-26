@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation'; 
+import { useRouter, useParams } from 'next/navigation'; 
 import { ToolCard } from '@/app/lib/types'; 
+import ToolPage from '@/app/components/ToolPage'; // Ensure this path is correct
 
 const ToolDetailPage = () => {
+  const router = useRouter();
   const { id } = useParams();
   const [tool, setTool] = useState<ToolCard | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -37,22 +39,17 @@ const ToolDetailPage = () => {
   if (!tool) {
     return <div>Tool not found</div>;
   }
-
+  
   return (
     <div>
-      <h1>{tool.name}</h1>
-      <p>{tool.description}</p>
-      <p>Location: {tool.location}</p>
-      <p>Daily Rate: ${tool.dailyRate}</p>
-      <p>Weekly Rate: ${tool.weeklyRate}</p>
-      <p>Monthly Rate: ${tool.monthlyRate}</p>
-      <img src={tool.picture} alt={tool.name} width="200" />
-      <p>Category: {tool.toolCategoryId}</p>
-      <p>Owner: {tool.ownerId}</p>
-      <h3>Reviews</h3>
-
+      <button 
+        onClick={() => router.push('/explore')} 
+        className="flex items-center justify-center w-12 h-12 text-black border-2 rounded text-2xl hover:bg-gray-700 mb-4 "
+      >
+        &lt;
+      </button>
+      <ToolPage tool={tool} />
     </div>
   );
 };
-
 export default ToolDetailPage;
