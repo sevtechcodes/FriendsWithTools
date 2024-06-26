@@ -1,28 +1,45 @@
+'use client';
 import React from 'react';
 import { ChevronLeftIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
 import { Input } from '@/components/ui/input';
-
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Conversation } from '@/app/lib/types';
 
-const ChatView = () => {
+export interface ConversationProps {
+  convo: Conversation
+};
+//TODO Modify Conversation type & schema to add FK for the tool. 
+//toolId should give access to the tool's 
+//picture, name, dailyrate etc
+
+const ChatView = ({ convo }: ConversationProps) => {
+    
+  const postMessage = () => {
+
+  };
+
   return (
     <>
       <header className=' flex items-center justify-start inset-x-0 top-0 border-t  border-grey h-20 shadow-md mb-1 bg-slate-200'>
         <Link href='/inbox'>
           <ChevronLeftIcon className="h-9 w-9 border m-4" />
         </Link>
-        <p>Tool pic</p>
+        <img src='https://picsum.photos/50' className='rounded' alt={'tool picture'}/>
         <div className='chat-info flex-col ml-6'>
           <p className='font-bold'>Daily rate here</p>
           <p>Tool name here</p>
         </div>
       </header>
-      <div>ChatView</div>
+      <div className='chat-view flex-col overflow-scroll h-[43rem] w-full p-2'>
+        <div className='message-right flex justify-self-end w-fit min-w-[10rem] rounded-md bg-green-100 m-4 p-2'>Hello</div>
+        <div className='message-left flex justify-self-start w-fit min-w-[10rem] rounded-md bg-blue-100 m-4 p-2'>Hello</div>
+      </div>
       <footer className=' fixed bg-white inset-x-0 bottom-0 border-t  border-grey h-20 shadow-md'>
         <div className="flex w-full max-w-sm items-center space-x-2 mt-5">
           <Input type="message" placeholder="Write something" />
-          <Button type="submit"><PaperAirplaneIcon className="h-5 w-5" /></Button>
+          <Button type="submit" onSubmit={postMessage}><PaperAirplaneIcon className="h-5 w-5" /></Button>
         </div>
       </footer>
     </>
