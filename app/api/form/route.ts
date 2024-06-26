@@ -34,8 +34,9 @@ export async function POST(request: NextRequest) {
         toolCategoryId,
       },
     });
-    return NextResponse.json(newTool);
+    return NextResponse.json({ data: newTool }, { status: 200 });
   } catch (error) {
-    NextResponse.json({ error: 'Internal Server Error' });
+    console.error(error);
+    return NextResponse.json({ error: 'Internal Server Error' });
   }
 }
