@@ -1,20 +1,18 @@
 import React from 'react';
 import { ToolCard as ToolType } from '../lib/types';
-import Liked from './Liked';
+
 
 export interface ToolCardProps {
   tool: ToolType;
 }
 
-const ToolCardComponent = ({ tool }: ToolCardProps) => {
+const ToolPage = ({ tool }: ToolCardProps) => {
   const defaultImage = 'https://shorturl.at/PyeKu'; // Placeholder image
   return (
     <div className="border-slate-50 border-4 p-4 rounded-xl shadow-md flex flex-col items-center m-4">
-      {/* Photo with Like button */}
-      <div className="relative w-full h-64 rounded-m overflow-hidden bg-cover bg-center"
+      <div className="testingDivName relative w-full h-64 rounded-m overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${tool.picture || defaultImage})` }}>
         <div className="absolute top-0 right-0 m-2">
-          <Liked />
         </div>
       </div>
 
@@ -53,4 +51,4 @@ const ToolCardComponent = ({ tool }: ToolCardProps) => {
   );
 };
 
-export default ToolCardComponent;
+export default ToolPage;

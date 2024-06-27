@@ -1,8 +1,7 @@
 'use client';
 import React from 'react';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { ToolCard, ToolsReviews } from '../../lib/types';
+import { ToolCard } from '../../lib/types';
 import ToolCardComponent from '../../components/ToolCard';
 
 const ToolsPage = () => {
@@ -38,9 +37,7 @@ const ToolsPage = () => {
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         {tools.map((tool) => (
           <div key={tool.id} className='tool-item'>
-            <Link href={`/tools/${tool.id}`}>
-              <ToolCardComponent tool={tool} />
-            </Link>
+            <ToolCardComponent tool={tool} />
           </div>
         ))}
       </div>
