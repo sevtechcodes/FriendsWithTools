@@ -22,7 +22,9 @@
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "firebase": "^10.12.2",
     "heroicons": "^2.1.4",
+    "idb": "^8.0.0",
     "lucide-react": "^0.396.0",
     "next": "^14.2.4",
     "react": "^18",
@@ -31,7 +33,6 @@
     "tailwindcss-animate": "^1.0.7",
     "ts-seed": "^1.0.5",
     "use-debounce": "^10.0.1",
-    "uuid": "^10.0.0",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
