@@ -19,12 +19,14 @@ model User {
   lastName       String
   email          String         
   password       String
-  profilePicture String
+  profilePicture String?
   conversations  Conversation[]
   reviews        ToolsReviews[]
   listings       ToolCard[]
   messages       Message[]
+  wishlist       WishList?
 }
+
 
 model ToolCard {
   id          String         @id @default(uuid())
@@ -38,12 +40,26 @@ model ToolCard {
   liked       Boolean
   available   Boolean
   reviews     ToolsReviews[]
-
   ownerId        String
   owner          User          @relation(fields: [ownerId], references: [id])
   toolCategoryId String
   ToolCategory   ToolCategory @relation(fields: [toolCategoryId], references: [id])
+  wishlists ToolsOnWishlists[]
+}
 
+model WishList {
+  id            String        @id @default(uuid())
+  ownerId       String        @unique
+  owner         User          @relation(fields: [ownerId], references: [id])
+  tools ToolsOnWishlists[]
+}
+
+model ToolsOnWishlists {
+  tool ToolCard @relation(fields: [toolId], references: [id])
+  toolId String
+  wishlist WishList @relation(fields: [wishlistId], references: [id])
+  wishlistId String
+  @@id([toolId, wishlistId])
 }
 
 model ToolCategory {
@@ -56,10 +72,8 @@ model ToolsReviews {
   id        String   @id @default(uuid())
   content   String
   createdAt DateTime @default(now())
-
   authorId String
   author   User   @relation(fields: [authorId], references: [id])
-
   toolCardId String
   toolCard   ToolCard @relation(fields: [toolCardId], references: [id])
 }
@@ -67,7 +81,6 @@ model ToolsReviews {
 model Conversation {
   id       String    @id @default(uuid())
   messages Message[]
-
   senderId String
   sender   User   @relation(fields: [senderId], references: [id])
 }
@@ -76,7 +89,6 @@ model Message {
   id        String   @id @default(uuid())
   content   String
   createdAt DateTime @default(now())
-
   authorId       String
   author         User         @relation(fields: [authorId], references: [id])
   conversationId String

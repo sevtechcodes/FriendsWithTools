@@ -1,4 +1,4 @@
-import { isString } from 'util';
+
 
 export type User = {
   _id: string;
@@ -11,6 +11,7 @@ export type User = {
   reviews: ToolsReviews[];
   listings: ToolCard[];
   messages: Message[];
+  wishlist?: WishList;
 };
 
 export type ToolCard = {
@@ -27,7 +28,19 @@ export type ToolCard = {
   reviews: ToolsReviews[];
   ownerId: string;
   toolCategoryId: string;
+  wishlists: ToolsOnWishlists[];
 };
+
+export type WishList = {
+  id: string;
+  ownerId: string;
+  tools: ToolsOnWishlists[]
+}
+
+export type ToolsOnWishlists = {
+  toolId: string;
+  wishlistId: string;
+}
 
 export type ToolCategory = {
   _id: string;
