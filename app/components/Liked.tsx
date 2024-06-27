@@ -1,32 +1,25 @@
 
 'use client';
-import React, { useState } from 'react';
-import { ToolCard as ToolType } from '../lib/types';
+import React from 'react';
+import { ToolCard as ToolType, User } from '../lib/types';
 
 interface LikedProps {
-  tool: ToolType; // Define the type of the 'tool' prop
+  tool: ToolType; 
+  user: User;
 }
 
-const Liked = ()=> {
-  const [isLiked, setIsLiked] = useState<boolean>(false);
-
-  const handleLike = () => {
-    setIsLiked(!isLiked); // Toggle the isLiked state
-    if (!isLiked) {
-      // addToWishlist(tool); // pass the tool to Withlist
-    }
-  };
-
-  const addToWishlist = (tool: ToolType) => {
-    console.log(`Adding ${tool} to wishlist`);
-    // TODO wishlist.push(tool);
+const Liked = ({tool, user} : LikedProps)=> {
+//no need for state, just change liked to true and add to user wishlist
+  const addToWishlist = (tool: ToolType, user: User) => {
+    tool.liked = true; // 
+    console.log(`Added ${tool} to wishlist`);
   };
 
 
   return (
     <div>
       <div className="absolute top-2 right-2 cursor-pointer text-2xl" onClick={handleLike}>
-        {isLiked ? '❤️' : '🤍'}
+        {tool.liked ? '❤️' : '🤍'}
       </div>
     </div>
   );
