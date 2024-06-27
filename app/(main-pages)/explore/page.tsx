@@ -14,6 +14,7 @@ const ToolsPage = () => {
       try {
         const response = await fetch('/api/tools');
         const data: ToolCard[] = await response.json();
+        
         setTools(data);
         setLoading(false);
       } catch (error) {

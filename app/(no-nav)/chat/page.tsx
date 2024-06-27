@@ -17,7 +17,7 @@ interface ConversationProps {
 //toolId should give access to the tool's
 //picture, name, dailyrate etc
 //TODO write POST method for messages, when posted the chatview messages should re-render to show the new message
-export const ChatView = ({ convo }: ConversationProps) => {
+const ChatView = ({ convo }: ConversationProps) => {
   const postMessage = () => {};
 
   return (
@@ -52,8 +52,8 @@ export const ChatView = ({ convo }: ConversationProps) => {
           </div>
         </div>
       </div>
-      <footer className=' fixed bg-white inset-x-0 bottom-0 border-t  border-grey h-20 shadow-md'>
-        <div className='flex w-full max-w-sm items-center space-x-2 mt-5'>
+      <footer className=' fixed bg-white inset-x-0 bottom-0 border-t  border-grey h-20 shadow-md p-2'>
+        <div className='flex w-full max-w-sm items-center space-x-2 mt-3'>
           <Input type='message' placeholder='Write something' />
           <Button type='submit' onSubmit={postMessage}>
             <PaperAirplaneIcon className='h-5 w-5' />
@@ -63,3 +63,5 @@ export const ChatView = ({ convo }: ConversationProps) => {
     </>
   );
 };
+
+export default ChatView;
