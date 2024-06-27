@@ -1,6 +1,6 @@
 import { PrismaClient, Prisma } from '@prisma/client';
 import { v4 as uuidv4 } from 'uuid';
-import { User, ToolCard, ToolCategory, ToolsReviews, Conversation, Message } from '@/app/lib/types';
+import { User, ToolCard, ToolCategory, ToolsReviews, Conversation, Message, Request } from '@/app/lib/types';
 import prisma from './db';
 
 // Define your Prisma client instance
@@ -18,7 +18,8 @@ async function main() {
       conversations: [],
       reviews: [],
       listings: [],
-      messages: []
+      messages: [],
+      requests: []
     },
     {
       _id: uuidv4(),
@@ -30,7 +31,8 @@ async function main() {
       conversations: [],
       reviews: [],
       listings: [],
-      messages: []
+      messages: [],
+      requests: []
     }
   ];
 
@@ -61,7 +63,8 @@ async function main() {
       available: true,
       reviews: [],
       ownerId: users[0]._id,
-      toolCategoryId: toolCategories[0]._id
+      toolCategoryId: toolCategories[0]._id,
+      requests: []
     },
     {
       id: uuidv4(),
@@ -76,7 +79,8 @@ async function main() {
       available: true,
       reviews: [],
       ownerId: users[1]._id,
-      toolCategoryId: toolCategories[1]._id
+      toolCategoryId: toolCategories[1]._id,
+      requests: []
     }
   ];
 
@@ -133,6 +137,30 @@ async function main() {
     }
   ];
 
+  const requests: Request[] = [
+    {
+      id: uuidv4(),
+      status: 'pending',
+      createdAt: new Date(),
+      toolId: toolCards[0].id,
+      userId: users[0]._id,
+    },
+    {
+      id: uuidv4(),
+      status: 'accepted',
+      createdAt: new Date(),
+      toolId: toolCards[1].id,
+      userId: users[0]._id,
+    },
+    {
+      id: uuidv4(),
+      status: 'declined',
+      createdAt: new Date(),
+      toolId: toolCards[0].id,
+      userId: users[0]._id,
+    },
+  ];
+
   for (const user of users) {
     await prisma.user.create({
       data: {
@@ -145,7 +173,6 @@ async function main() {
       }
     });
   }
-
   
   for (const category of toolCategories) {
     await prisma.toolCategory.create({
@@ -244,6 +271,18 @@ async function main() {
         createdAt: message.createdAt,
         authorId: message.authorId,
         conversationId: message.conversationId
+      }
+    });
+  }
+
+  for (const request of requests) {
+    await prisma.request.create({
+      data: {
+        id: request.id,
+        status: request.status,
+        createdAt: request.createdAt,
+        toolId: request.toolId,
+        userId: request.userId
       }
     });
   }

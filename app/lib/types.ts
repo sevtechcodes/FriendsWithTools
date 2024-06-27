@@ -11,6 +11,7 @@ export type User = {
   reviews: ToolsReviews[];
   listings: ToolCard[];
   messages: Message[];
+  requests: Request[];
 };
 
 export type ToolCard = {
@@ -27,6 +28,7 @@ export type ToolCard = {
   reviews: ToolsReviews[];
   ownerId: string;
   toolCategoryId: string;
+  requests: Request[];
 };
 
 export type ToolCategory = {
@@ -58,4 +60,12 @@ export type Message = {
   author: User;
   conversationId: string;
   conversation: Conversation;
+};
+
+export type Request = {
+  id: string;
+  status: string;
+  createdAt: Date;
+  toolId: string;
+  userId: string;
 };
