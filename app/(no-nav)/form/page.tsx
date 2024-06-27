@@ -37,6 +37,7 @@ const Form = () => {
     ownerId: 'f4bb67e8-bcc9-4498-ade3-7cce2b8d65ce',
     id: uuidv4(),
     reviews: [],
+    // toolCategoryId: '',
     toolCategoryId: '5d20758d-db49-45b6-a9a6-fff4085d5804',
   });
   const [categories, setCategory] = useState<ToolCategory[]>([]);
@@ -59,6 +60,8 @@ const Form = () => {
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = event.target;
+    console.log('name', name);
+    console.log('value', value);
     setInput((prevData) => ({
       ...prevData,
       [name]:
@@ -68,16 +71,19 @@ const Form = () => {
     }));
   };
 
-  const handleSelectChange = (name: string, value: string) => {
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = event.target;
     setInput((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    console.log('input', input);
     const data = {
       ...input,
     };
+    console.log('data', data);
 
     try {
       const response = await fetch('/api/form', {
@@ -201,7 +207,7 @@ const Form = () => {
             <label htmlFor='category' className='mb-1'>
               Category
             </label>
-            <Select
+            {/* <Select
               onValueChange={(value) => handleSelectChange('category', value)}
             >
               <SelectTrigger className='w-[180px]'>
@@ -214,7 +220,21 @@ const Form = () => {
                   </SelectItem>
                 ))}
               </SelectContent>
-            </Select>
+            </Select> */}
+
+            <select
+              name='toolCategoryId'
+              value={input.toolCategoryId}
+              onChange={handleSelectChange}
+              required
+            >
+              <option value=''>Choose a category</option>
+              {categories.map((category) => (
+                <option key={category._id} value={category._id}>
+                  {category.categoryName}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div>
