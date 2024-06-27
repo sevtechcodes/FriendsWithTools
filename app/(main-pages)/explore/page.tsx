@@ -11,6 +11,7 @@ const ToolsPage = ({
   searchParams?: {
     query?: string;
   };
+
 }) => {
   const [tools, setTools] = useState<ToolCard[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -49,7 +50,7 @@ const ToolsPage = ({
             <Link href={`/tools/${tool.id}`}>
               <ToolCardComponent
                 tool={tool}
-                query={searchParams?.query || ''}
+                query={query}
               />
             </Link>
           </div>

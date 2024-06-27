@@ -4,9 +4,10 @@ import Liked from './Liked';
 
 export interface ToolCardProps {
   tool: ToolType;
+  query: string
 }
 
-const ToolCardComponent = ({ tool }: ToolCardProps) => {
+const ToolCardComponent = ({ tool, query }: ToolCardProps) => {
   const defaultImage = 'https://shorturl.at/PyeKu'; //place holder image
   return (
     <div className=' border-slate-50 border-4 p-4 rounded-xl shadow-md flex flex-col items-center m-4'>
