@@ -211,7 +211,7 @@ const Form = () => {
               onChange={handleChange}
             />
           </div>
-          <div className='flex flex-row justify-between'>
+          <div className='flex flex-col justify-between'>
             <label htmlFor='image' className='mb-1'>
               Product image
             </label>
