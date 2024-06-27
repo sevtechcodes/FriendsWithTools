@@ -3,27 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ToolCategory, ToolCard } from '../../lib/types';
 import { v4 as uuidv4 } from 'uuid';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import Link from 'next/link';
-
-// type FormInput = {
-//   name: string;
-//   description: string;
-//   location: string;
-//   dailyRate: number;
-//   weeklyRate?: number;
-//   monthlyRate?: number;
-//   picture?: string;
-//   liked: boolean;
-//   available: boolean;
-//   ownerId: string;
-// };
 
 const Form = () => {
   const [input, setInput] = useState<ToolCard>({
@@ -61,8 +41,6 @@ const Form = () => {
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = event.target;
-    console.log('name', name);
-    console.log('value', value);
 
     setInput((prevData) => ({
       ...prevData,
@@ -81,12 +59,6 @@ const Form = () => {
 
     setInput((prevData) => ({ ...prevData, [name]: value }));
   };
-
-  // const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  //   const { value } = event.target;
-  //   console.log('Selected category ID:', value);
-  //   setInput((prevData) => ({ ...prevData, toolCategoryId: value }));
-  // };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -128,7 +100,7 @@ const Form = () => {
   };
 
   return (
-    <div className='flex justify-center items-center'>
+    <div className='flex justify-center items-center mt-10 h-200'>
       <div className='w-full max-w-xs'>
         <div>
           <Link href='/rented'>
@@ -139,7 +111,7 @@ const Form = () => {
           onSubmit={handleSubmit}
           className='flex flex-col bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'
         >
-          <label htmlFor='name' className='mb-1'>
+          <label htmlFor='name' className='mb-1 mt-5'>
             Product Name
           </label>
           <input
@@ -152,7 +124,7 @@ const Form = () => {
             onChange={handleChange}
             required
           />
-          <label htmlFor='description' className='mb-1'>
+          <label htmlFor='description' className='mb-1 mt-5'>
             Product Description
           </label>
           <input
@@ -165,7 +137,7 @@ const Form = () => {
             onChange={handleChange}
             required
           />
-          <label htmlFor='location' className='mb-1'>
+          <label htmlFor='location' className='mb-1 mt-5'>
             Pick up address
           </label>
           <input
@@ -179,11 +151,11 @@ const Form = () => {
             required
           />
           <div className='flex flex-row justify-between'>
-            <label htmlFor='dailyRate' className='mb-1'>
+            <label htmlFor='dailyRate' className='mb-1 mt-5'>
               Daily rate
             </label>
             <input
-              className='mb-4 border-b-2 w-20'
+              className='mb-4 border-b-2 w-20 mt-4'
               id='dailyRate'
               name='dailyRate'
               type='number'
@@ -194,11 +166,11 @@ const Form = () => {
             />
           </div>
           <div className='flex flex-row justify-between'>
-            <label htmlFor='weeklyRate' className='mb-1'>
+            <label htmlFor='weeklyRate' className='mb-1 mt-5'>
               Weekly rate
             </label>
             <input
-              className='mb-4 border-b-2 w-20'
+              className='mb-4 border-b-2 w-20 mt-4'
               id='weeklyRate'
               name='weeklyRate'
               type='number'
@@ -207,12 +179,12 @@ const Form = () => {
               onChange={handleChange}
             />
           </div>
-          <div className='flex flex-row justify-between'>
+          <div className='flex flex-row justify-between mt-5'>
             <label htmlFor='monthlyRate' className='mb-1'>
               Monthly rate
             </label>
             <input
-              className='mb-4 border-b-2 w-20'
+              className='mb-4 border-b-2 w-20 '
               id='monthlyRate'
               name='monthlyRate'
               type='number'
@@ -222,37 +194,23 @@ const Form = () => {
             />
           </div>
           <div className='flex flex-row justify-between'>
-            <label htmlFor='image' className='mb-1'>
+            <label htmlFor='image' className='mb-1 '>
               Product image
             </label>
             <button className='bg-darkGreen p-2 text-white text-sm rounded-md'>
               Upload
             </button>
           </div>
-          <div className='flex flex-row justify-between'>
-            <label htmlFor='category' className='mb-1'>
+          <div className='flex flex-row justify-between mt-5 mb-10'>
+            <label htmlFor='category' className='mb-1 mt-5'>
               Category
             </label>
-            {/* <Select
-              onValueChange={(value) => handleSelectChange('category', value)}
-            >
-              <SelectTrigger className='w-[180px]'>
-                <SelectValue placeholder='Pick a category' />
-              </SelectTrigger>
-              <SelectContent>
-                {categories.map((category) => (
-                  <SelectItem key={category._id} value={category._id}>
-                    {category.categoryName}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select> */}
-
             <select
               name='toolCategoryId'
               value={input.toolCategoryId}
               onChange={handleSelectChange}
               required
+              className='mt-5'
             >
               <option value=''>Choose a category</option>
               {categories.map((category) => (
@@ -262,7 +220,6 @@ const Form = () => {
               ))}
             </select>
           </div>
-
           <div>
             <button
               type='submit'
