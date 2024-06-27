@@ -1,7 +1,7 @@
-// Assuming 'use client'; is a typo and it should be 'use strict';
 'use client';
-import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-import { ToolCategory, ToolCard } from '../../lib/types';
+import React, { useState, useEffect } from 'react';
+import { ToolCategory } from '../../lib/types';
+import { ToolCard } from '../../lib/types';
 import { v4 as uuidv4 } from 'uuid';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import {
@@ -12,16 +12,26 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import Link from 'next/link';
-import { storage } from '@/lib/firebase';
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 
-const Form: React.FC = () => {
+// type FormInput = {
+//   name: string;
+//   description: string;
+//   location: string;
+//   dailyRate: number;
+//   weeklyRate?: number;
+//   monthlyRate?: number;
+//   picture?: string;
+//   liked: boolean;
+//   available: boolean;
+//   ownerId: string;
+// };
+
+const Form = () => {
   const [input, setInput] = useState<ToolCard>({
     name: '',
     description: '',
     location: '',
     dailyRate: 0,
-    picture: '', // Added for picture state
     liked: false,
     available: true,
     ownerId: 'f4bb67e8-bcc9-4498-ade3-7cce2b8d65ce',
@@ -29,17 +39,14 @@ const Form: React.FC = () => {
     reviews: [],
     toolCategoryId: '5d20758d-db49-45b6-a9a6-fff4085d5804',
   });
-  const [categories, setCategories] = useState<ToolCategory[]>([]);
+  const [categories, setCategory] = useState<ToolCategory[]>([]);
 
   useEffect(() => {
     const fetchCategory = async () => {
       try {
         const response = await fetch('/api/categories');
-        if (!response.ok) {
-          throw new Error('Failed to fetch categories');
-        }
         const data: ToolCategory[] = await response.json();
-        setCategories(data);
+        setCategory(data);
       } catch (error) {
         console.error('Failed to fetch categories:', error);
       }
@@ -47,9 +54,9 @@ const Form: React.FC = () => {
 
     fetchCategory();
   }, []);
-
+  console.log(categories);
   const handleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = event.target;
     setInput((prevData) => ({
@@ -65,8 +72,12 @@ const Form: React.FC = () => {
     setInput((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    const data = {
+      ...input,
+    };
 
     try {
       const response = await fetch('/api/form', {
@@ -74,106 +85,14 @@ const Form: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(input),
+        body: JSON.stringify(data),
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit form');
-      }
 
       const responseData = await response.json();
       console.log('API response:', responseData);
     } catch (error) {
       console.error('Error submitting form:', error);
     }
-  };
-
-  const UploadMedia: React.FC<{ onUpload: (url: string) => void }> = ({
-    onUpload,
-  }) => {
-    const [mediaFile, setMediaFile] = useState<File | null>(null);
-    const [previewUrl, setPreviewUrl] = useState<string>('');
-
-    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0];
-      if (file) {
-        setMediaFile(file);
-        setPreviewUrl(URL.createObjectURL(file));
-      }
-    };
-
-    const handleFileUpload = () => {
-      if (mediaFile) {
-        const storageRef = ref(storage, `files/${mediaFile.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, mediaFile);
-
-        uploadTask.on(
-          'state_changed',
-          null,
-          (error) => {
-            console.error('Upload failed:', error);
-          },
-          async () => {
-            try {
-              const mediaUrl = await getDownloadURL(uploadTask.snapshot.ref);
-              onUpload(mediaUrl);
-              clearUpload();
-            } catch (error) {
-              console.error('Error getting download URL:', error);
-            }
-          }
-        );
-      }
-    };
-
-    const clearUpload = () => {
-      setMediaFile(null);
-      setPreviewUrl('');
-    };
-
-    return (
-      <div className='file-input-wrapper'>
-				        {previewUrl && (
-          <div className='media-preview'>
-            {mediaFile?.type.startsWith('image/') ? (
-              <img
-                src={previewUrl}
-                className="w-20 h-18 object-cover"
-                alt="Preview"
-              />
-            ) : (
-              <video controls width='170px' height='170px'>
-                <source src={previewUrl} type={mediaFile?.type || ''} />
-              </video>
-            )}
-          </div>
-        )}
-        <input
-          type='file'
-          id='fileInput'
-          name='fileInput'
-          accept='image/*,video/*'
-          onChange={handleFileChange}
-          className='hidden'
-        />
-        <label
-          htmlFor="fileInput"
-          className="bg-darkGreen p-2 text-white rounded-md cursor-pointer"
-        >
-								Upload
-        </label>
-
-        {mediaFile && (
-          <button
-            type='button'
-            className='bg-darkGreen p-2 text-white text-sm rounded-md'
-            onClick={handleFileUpload}
-          >
-            Upload
-          </button>
-        )}
-      </div>
-    );
   };
 
   return (
@@ -274,16 +193,16 @@ const Form: React.FC = () => {
             <label htmlFor='image' className='mb-1'>
               Product image
             </label>
-            <UploadMedia
-              onUpload={(mediaUrl) => setInput((prevData) => ({ ...prevData, picture: mediaUrl }))}
-            />
+            <button className='bg-darkGreen p-2 text-white text-sm rounded-md'>
+              Upload
+            </button>
           </div>
           <div className='flex flex-row justify-between'>
             <label htmlFor='category' className='mb-1'>
               Category
             </label>
             <Select
-              onValueChange={(value) => handleSelectChange('toolCategoryId', value)}
+              onValueChange={(value) => handleSelectChange('category', value)}
             >
               <SelectTrigger className='w-[180px]'>
                 <SelectValue placeholder='Pick a category' />

@@ -55,6 +55,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onUploadComplete }) => {
           accept="image/*,video/*"
           onChange={handleFileChange}
         />
+        <label>Upload</label>
         <button type="button" onClick={handleUpload} disabled={!mediaFile}>
           Upload
         </button>
@@ -66,9 +67,9 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onUploadComplete }) => {
         {previewUrl && (
           <div>
             {mediaType === 'image' ? (
-              <img src={previewUrl} width="170px" height="170px" alt="Preview" />
+              <img src={previewUrl} width="140px" height="120px" alt="Preview" />
             ) : (
-              <video controls width="170px" height="170px">
+              <video controls width="140px" height="120px">
                 <source src={previewUrl} type={mediaFile?.type} />
               </video>
             )}
