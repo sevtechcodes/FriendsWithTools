@@ -218,7 +218,6 @@ const Form = () => {
               Category
             </label>
 
-
             <Select
               onValueChange={(value) =>
                 handleSelectChange('toolCategoryId', value)
