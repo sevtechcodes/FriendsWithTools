@@ -5,6 +5,14 @@ import { v4 as uuidv4 } from 'uuid';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+
 const Form = () => {
   const [input, setInput] = useState<ToolCard>({
     name: '',
@@ -53,10 +61,14 @@ const Form = () => {
     }));
   };
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const { name, value } = event.target;
-    console.log('selected category ID:', value);
+  // const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const { name, value } = event.target;
+  //   console.log('selected category ID:', value);
 
+  //   setInput((prevData) => ({ ...prevData, [name]: value }));
+  // };
+
+  const handleSelectChange = (name: string, value: string) => {
     setInput((prevData) => ({ ...prevData, [name]: value }));
   };
 
@@ -205,7 +217,7 @@ const Form = () => {
             <label htmlFor='category' className='mb-1 mt-5'>
               Category
             </label>
-            <select
+            {/* <select
               name='toolCategoryId'
               value={input.toolCategoryId}
               onChange={handleSelectChange}
@@ -218,7 +230,26 @@ const Form = () => {
                   {category.categoryName}
                 </option>
               ))}
-            </select>
+            </select> */}
+
+            <Select
+              onValueChange={(value) =>
+                handleSelectChange('toolCategoryId', value)
+              }
+              name='toolCategoryId'
+              value={input.toolCategoryId}
+            >
+              <SelectTrigger className='w-[180px]'>
+                <SelectValue placeholder='Select a category' />
+              </SelectTrigger>
+              <SelectContent>
+                {categories.map((category) => (
+                  <SelectItem key={category.id} value={category.id}>
+                    {category.categoryName}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
           <div>
             <button
