@@ -144,140 +144,146 @@ const Form = () => {
   };
 
   return (
-    <div className='flex justify-center items-center mt-10 h-200'>
-      <div className='w-full max-w-xs'>
+    <>
+      <header className='border-grey h-20 shadow-md mb-10 bg-slate-200 '>
         <div>
           <Link href='/rented'>
-            <ChevronLeftIcon className='h-4 w-4' />
+            <ChevronLeftIcon className='h-9 w-9 border pl-5' />
           </Link>
         </div>
-        <form
-          onSubmit={handleSubmit}
-          className='flex flex-col bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'
-        >
-          <label htmlFor='name' className='mb-1 mt-5'>
+      </header>
+      <div className='flex justify-center items-center  h-200'>
+
+        <div className='w-full max-w-xs'>
+
+          <form
+            onSubmit={handleSubmit}
+            className='flex flex-col bg-white shadow-md rounded px-8 pt-6 pb-8 '
+          >
+            <label htmlFor='name' className='mb-1 mt-5'>
             Product Name
-          </label>
-          <input
-            className='mb-4 border-b-2'
-            id='name'
-            name='name'
-            type='text'
-            placeholder='What do you wish to rent?'
-            value={input.name}
-            onChange={handleChange}
-            required
-          />
-          <label htmlFor='description' className='mb-1 mt-5'>
-            Product Description
-          </label>
-          <input
-            className='mb-4 border-b-2'
-            id='description'
-            name='description'
-            type='text'
-            placeholder='Describe your product'
-            value={input.description}
-            onChange={handleChange}
-            required
-          />
-          <label htmlFor='location' className='mb-1 mt-5'>
-            Pick up address
-          </label>
-          <input
-            className='mb-4 border-b-2'
-            id='location'
-            name='location'
-            type='text'
-            placeholder='Where to pick up your tool?'
-            value={input.location}
-            onChange={handleChange}
-            required
-          />
-          <div className='flex flex-row justify-between'>
-            <label htmlFor='dailyRate' className='mb-1 mt-5'>
-              Daily rate
             </label>
             <input
-              className='mb-4 border-b-2 w-20 mt-4'
-              id='dailyRate'
-              name='dailyRate'
-              type='number'
-              placeholder='€'
-              value={input.dailyRate}
+              className='mb-4 border-b-2'
+              id='name'
+              name='name'
+              type='text'
+              placeholder='What do you wish to rent?'
+              value={input.name}
               onChange={handleChange}
               required
             />
-          </div>
-          <div className='flex flex-row justify-between'>
-            <label htmlFor='weeklyRate' className='mb-1 mt-5'>
+            <label htmlFor='description' className='mb-1 mt-5'>
+            Product Description
+            </label>
+            <input
+              className='mb-4 border-b-2'
+              id='description'
+              name='description'
+              type='text'
+              placeholder='Describe your product'
+              value={input.description}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor='location' className='mb-1 mt-5'>
+            Pick up address
+            </label>
+            <input
+              className='mb-4 border-b-2'
+              id='location'
+              name='location'
+              type='text'
+              placeholder='Where to pick up your tool?'
+              value={input.location}
+              onChange={handleChange}
+              required
+            />
+            <div className='flex flex-row justify-between'>
+              <label htmlFor='dailyRate' className='mb-1 mt-5'>
+              Daily rate
+              </label>
+              <input
+                className='mb-4 border-b-2 w-20 mt-4'
+                id='dailyRate'
+                name='dailyRate'
+                type='number'
+                placeholder='€'
+                value={input.dailyRate}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className='flex flex-row justify-between'>
+              <label htmlFor='weeklyRate' className='mb-1 mt-5'>
               Weekly rate
-            </label>
-            <input
-              className='mb-4 border-b-2 w-20 mt-4'
-              id='weeklyRate'
-              name='weeklyRate'
-              type='number'
-              placeholder='€'
-              value={input.weeklyRate || ''}
-              onChange={handleChange}
-            />
-          </div>
-          <div className='flex flex-row justify-between mt-5'>
-            <label htmlFor='monthlyRate' className='mb-1'>
+              </label>
+              <input
+                className='mb-4 border-b-2 w-20 mt-4'
+                id='weeklyRate'
+                name='weeklyRate'
+                type='number'
+                placeholder='€'
+                value={input.weeklyRate || ''}
+                onChange={handleChange}
+              />
+            </div>
+            <div className='flex flex-row justify-between mt-5'>
+              <label htmlFor='monthlyRate' className='mb-1'>
               Monthly rate
-            </label>
-            <input
-              className='mb-4 border-b-2 w-20 '
-              id='monthlyRate'
-              name='monthlyRate'
-              type='number'
-              placeholder='€'
-              value={input.monthlyRate || ''}
-              onChange={handleChange}
-            />
-          </div>
-          <div className='flex flex-col justify-between'>
-            <label htmlFor='image' className='mb-1'>
+              </label>
+              <input
+                className='mb-4 border-b-2 w-20 '
+                id='monthlyRate'
+                name='monthlyRate'
+                type='number'
+                placeholder='€'
+                value={input.monthlyRate || ''}
+                onChange={handleChange}
+              />
+            </div>
+            <div className='flex flex-col justify-between'>
+              <label htmlFor='image' className='mb-5'>
               Product image
-            </label>
-            <Input id="picture" type="file" onChange={handleFileChange} className='bg-darkGreen p-2 text-white text-sm rounded-md'/>
-          </div>
-          <div className='flex flex-row justify-between mt-5 mb-10'>
-            <label htmlFor='category' className='mb-1 mt-5'>
+              </label>
+              <Input id="picture" type="file" onChange={handleFileChange} className='bg-darkGreen p-2 text-white text-sm rounded-md'/>
+            </div>
+            <div className='flex flex-row justify-between mt-5 mb-10'>
+              <label htmlFor='category' className='mb-1 mt-5'>
               Category
-            </label>
+              </label>
 
-            <Select
-              onValueChange={(value) =>
-                handleSelectChange('toolCategoryId', value)
-              }
-              name='toolCategoryId'
-              value={input.toolCategoryId}
-            >
-              <SelectTrigger className='w-[180px]'>
-                <SelectValue placeholder='Select a category' />
-              </SelectTrigger>
-              <SelectContent>
-                {categories.map((category) => (
-                  <SelectItem key={category.id} value={category.id}>
-                    {category.categoryName}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div>
-            <button
-              type='submit'
-              className='bg-darkGreen p-2 text-white text-sm rounded-md'
-            >
+              <Select
+                onValueChange={(value) =>
+                  handleSelectChange('toolCategoryId', value)
+                }
+                name='toolCategoryId'
+                value={input.toolCategoryId}
+              >
+                <SelectTrigger className='w-45 mt-3'>
+                  <SelectValue placeholder='Select a category' />
+                </SelectTrigger>
+                <SelectContent>
+                  {categories.map((category) => (
+                    <SelectItem key={category.id} value={category.id}>
+                      {category.categoryName}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className='flex items-center justify-center  '>
+              <button
+                type='submit'
+                className='bg-darkGreen pt-4 pb-4 pl-20 pr-20 text-white text-sm rounded-md'
+              >
               Submit
-            </button>
-          </div>
-        </form>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
