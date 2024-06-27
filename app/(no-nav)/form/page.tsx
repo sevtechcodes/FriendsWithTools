@@ -30,7 +30,7 @@ const Form = () => {
     name: '',
     description: '',
     location: '',
-    dailyRate: 0,
+    dailyRate: '',
     weeklyRate: 0,
     monthlyRate: 0,
     liked: false,
@@ -63,11 +63,14 @@ const Form = () => {
     const { name, value } = event.target;
     console.log('name', name);
     console.log('value', value);
+
     setInput((prevData) => ({
       ...prevData,
       [name]:
         name === 'dailyRate' || name === 'weeklyRate' || name === 'monthlyRate'
-          ? parseInt(value)
+          ? value
+            ? parseInt(value)
+            : 0
           : value,
     }));
   };
@@ -105,6 +108,20 @@ const Form = () => {
 
       const responseData = await response.json();
       console.log('API response:', responseData);
+      setInput({
+        name: '',
+        description: '',
+        location: '',
+        dailyRate: '',
+        weeklyRate: 0,
+        monthlyRate: 0,
+        liked: false,
+        available: true,
+        ownerId: 'f4bb67e8-bcc9-4498-ade3-7cce2b8d65ce',
+        id: uuidv4(),
+        reviews: [],
+        toolCategoryId: '',
+      });
     } catch (error) {
       console.error('Error submitting form:', error);
     }

@@ -18,7 +18,7 @@ export type ToolCard = {
   name: string;
   description: string;
   location: string;
-  dailyRate: number;
+  dailyRate: number | string;
   weeklyRate?: number;
   monthlyRate?: number;
   picture?: string;
