@@ -145,12 +145,10 @@ const Form = () => {
 
   return (
     <>
-      <header className='border-grey h-20 shadow-md mb-10 bg-slate-200 '>
-        <div>
-          <Link href='/rented'>
-            <ChevronLeftIcon className='h-9 w-9 border pl-5' />
-          </Link>
-        </div>
+      <header className='border-grey h-20 shadow-md mb-5 bg-slate-200 '>
+        <Link href='/rented' className='h-15 w-15'>
+          <ChevronLeftIcon className='h-12 w-12 border pl-5' />
+        </Link>
       </header>
       <div className='flex justify-center items-center  h-200'>
 
@@ -158,7 +156,7 @@ const Form = () => {
 
           <form
             onSubmit={handleSubmit}
-            className='flex flex-col bg-white shadow-md rounded px-8 pt-6 pb-8 '
+            className='flex flex-col bg-white shadow-md rounded px-8 pt-1 pb-8 '
           >
             <label htmlFor='name' className='mb-1 mt-5'>
             Product Name
