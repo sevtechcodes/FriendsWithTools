@@ -15,12 +15,13 @@ const ToolsPage = ({
 }) => {
   const [tools, setTools] = useState<ToolCard[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const query = searchParams?.query || '';
 
   useEffect(() => {
     const fetchTools = async () => {
       try {
-        const query = searchParams?.query || '';
         const response = await fetch(`/api/tools?query=${query}`);
+        console.log(response);
         const data: ToolCard[] = await response.json();
         setTools(data);
         setLoading(false);
@@ -31,14 +32,14 @@ const ToolsPage = ({
     };
 
     fetchTools();
-  }, [searchParams?.query]);
+  }, [query]);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  const query = searchParams?.query || '';
-  console.log('query', query);
+  // const query = searchParams?.query || '';
+  // console.log('query', query);
   return (
     <div className='container mx-auto px-2 py-2'>
       <h1 className='text-2xl font-bold mb-4 text-center'>
