@@ -30,7 +30,8 @@ export type ToolCard = {
 };
 
 export type ToolCategory = {
-  _id: string;
+  // _id: string;
+  id: string;
   categoryName?: string;
   tools: ToolCard[];
 };

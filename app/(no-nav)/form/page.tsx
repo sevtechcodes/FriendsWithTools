@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { ToolCategory } from '../../lib/types';
-import { ToolCard } from '../../lib/types';
+import { ToolCategory, ToolCard } from '../../lib/types';
 import { v4 as uuidv4 } from 'uuid';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import {
@@ -32,13 +31,15 @@ const Form = () => {
     description: '',
     location: '',
     dailyRate: 0,
+    weeklyRate: 0,
+    monthlyRate: 0,
     liked: false,
     available: true,
     ownerId: 'f4bb67e8-bcc9-4498-ade3-7cce2b8d65ce',
     id: uuidv4(),
     reviews: [],
-    // toolCategoryId: '',
-    toolCategoryId: '5d20758d-db49-45b6-a9a6-fff4085d5804',
+    toolCategoryId: '',
+    // toolCategoryId: '5d20758d-db49-45b6-a9a6-fff4085d5804',
   });
   const [categories, setCategory] = useState<ToolCategory[]>([]);
 
@@ -55,7 +56,7 @@ const Form = () => {
 
     fetchCategory();
   }, []);
-  console.log(categories);
+  console.log('categories', categories);
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -73,8 +74,16 @@ const Form = () => {
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = event.target;
+    console.log('selected category ID:', value);
+
     setInput((prevData) => ({ ...prevData, [name]: value }));
   };
+
+  // const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const { value } = event.target;
+  //   console.log('Selected category ID:', value);
+  //   setInput((prevData) => ({ ...prevData, toolCategoryId: value }));
+  // };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -230,7 +239,7 @@ const Form = () => {
             >
               <option value=''>Choose a category</option>
               {categories.map((category) => (
-                <option key={category._id} value={category._id}>
+                <option key={category.id} value={category.id}>
                   {category.categoryName}
                 </option>
               ))}
