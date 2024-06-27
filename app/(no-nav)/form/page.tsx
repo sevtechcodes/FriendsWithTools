@@ -217,20 +217,7 @@ const Form = () => {
             <label htmlFor='category' className='mb-1 mt-5'>
               Category
             </label>
-            {/* <select
-              name='toolCategoryId'
-              value={input.toolCategoryId}
-              onChange={handleSelectChange}
-              required
-              className='mt-5'
-            >
-              <option value=''>Choose a category</option>
-              {categories.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.categoryName}
-                </option>
-              ))}
-            </select> */}
+
 
             <Select
               onValueChange={(value) =>
