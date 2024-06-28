@@ -4,8 +4,8 @@ import { WishList } from '../../lib/types';
 
 export async function GET (request: NextRequest) {
   try {
-    const tools = await prisma.toolCard.findMany({where: {liked: true}});
-    return NextResponse.json(tools);
+    const wishList = await prisma.wishList.findUnique({where: {ownerId: '5d8ec93b-05e9-4132-bdc4-f9a1102c1db3'}});
+    return NextResponse.json(wishList);
   } catch (error) {
     return NextResponse.json({ error: 'Failed to fetch favorited tools' }, { status: 500 });
   }
@@ -18,7 +18,7 @@ export async function POST (request: NextRequest) { //?
   try {
     const wishlist: Partial<WishList> = await prisma.wishList.create({
       data: {
-        ownerId: '85d0c4fe-439c-4adb-9343-1b8fdcb7c9e4',
+        ownerId: '5d8ec93b-05e9-4132-bdc4-f9a1102c1db3',
         list: {
           connect: [{id: favedTool.id}]
         }

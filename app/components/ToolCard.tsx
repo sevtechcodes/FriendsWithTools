@@ -15,7 +15,7 @@ export interface ToolCardProps {
 const ToolCardComponent =  ( { tool }: ToolCardProps ) => {
   const defaultImage = 'https://shorturl.at/PyeKu'; //place holder image
 
-  //TODO add filtering so if toolCard found in user wishlist, it will be disconnected instead
+  //TODO add filtering so if toolCard found in user wishlist, it will be disconnected
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleLike = async () => {
@@ -30,11 +30,26 @@ const ToolCardComponent =  ( { tool }: ToolCardProps ) => {
         },
         body: JSON.stringify(tool)
       });
+      console.log('gjkfhdgjkfdhsgkhfds', tool);
       const responseData = await response.json();
       console.log('API response:', responseData);
+      
     } catch (error) {
       console.error('Error adding to wishlist', error);
     }
+    // .then(async response => {
+    //   if (!response.ok) {
+    //     console.log('gfdgsdfgd', await response.json());
+    //     throw new Error('Network response was not ok');
+    //   }
+    //   return response.json();
+    // })
+    // .then(data => {
+    //   console.log('Success:', data);
+    // })
+    // .catch(error => {
+    //   console.error('There was a problem with the fetch operation:', error);
+    // });
 
   };
 
