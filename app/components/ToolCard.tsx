@@ -4,20 +4,38 @@ import {
   HeartIcon
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { User } from '@prisma/client';
 
 
 export interface ToolCardProps {
   tool: ToolType;
+  user: User;
 }
 
 const ToolCardComponent =  ( { tool }: ToolCardProps ) => {
   const defaultImage = 'https://shorturl.at/PyeKu'; //place holder image
 
-  //TODO post tool card to user wishlist, add in api 
+  //TODO add filtering so if toolCard found in user wishlist, it will be disconnected instead
   const [isFavorite, setIsFavorite] = useState(false);
-  const toggleLike = () => {
+
+  const handleLike = async () => {
     tool.liked = tool.liked ? false : true;
     setIsFavorite(isFavorite ? false : true);
+
+    try {
+      const response = await fetch('/api/wishlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(tool)
+      });
+      const responseData = await response.json();
+      console.log('API response:', responseData);
+    } catch (error) {
+      console.error('Error adding to wishlist', error);
+    }
+
   };
 
   return (
@@ -35,7 +53,7 @@ const ToolCardComponent =  ( { tool }: ToolCardProps ) => {
         </div>
         <div className="flex flex-col items-center justify-between">
           <h1 className="text-2xl font-semibold text-gray-900">${tool.dailyRate}</h1>
-          <div className="relative text-[2rem] hover:cursor-pointer" onClick={toggleLike}>{
+          <div className="relative text-[2rem] hover:cursor-pointer" onClick={handleLike}>{
             tool.liked ?
               <HeartIcon className='size-8 stroke-red-600 fill-red-600' />
               :
