@@ -21,9 +21,7 @@ const ToolsPage = ({
     const fetchTools = async () => {
       try {
         const response = await fetch(`/api/tools?query=${query}`);
-        console.log(response);
         const data: ToolCard[] = await response.json();
-        
         setTools(data);
         setLoading(false);
       } catch (error) {
@@ -39,7 +37,6 @@ const ToolsPage = ({
     const fetchTools = async () => {
       try {
         const response = await fetch(`/api/search?query=${query}`);
-        console.log(response);
         const data: ToolCard[] = await response.json();
         setTools(data);
         setLoading(false);

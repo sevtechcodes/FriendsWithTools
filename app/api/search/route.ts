@@ -3,10 +3,8 @@ import prisma from '../../../prisma/db';
 
 export async function GET (request: NextRequest) {
   const url = new URL(request.url);
-  //not getting the URL
-  console.log('URL',url);
+
   const query = url.searchParams.get('query');
-  console.log('server query', query);
 
   try {
     const tools = await prisma.toolCard.findMany({
@@ -15,10 +13,6 @@ export async function GET (request: NextRequest) {
           contains: query || '',
           mode: 'insensitive',
         },
-      },
-      include: {
-        reviews: true,
-        owner: true,
       },
     });
 
