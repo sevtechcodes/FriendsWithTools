@@ -5,8 +5,9 @@ import Link from 'next/link';
 const Login = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add form submission logic here
+    //Add form submission logic here
   };
+
 
   return (
     <div className="w-full flex flex-wrap">
@@ -19,6 +20,7 @@ const Login = () => {
               <input
                 type="email"
                 id="email"
+								required
                 placeholder="your@email.com"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
@@ -30,6 +32,7 @@ const Login = () => {
                 type="password"
                 id="password"
                 placeholder="Password"
+								required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
@@ -43,9 +46,7 @@ const Login = () => {
           <div className="text-center pt-12 pb-12">
             <p>
               No account yet?{' '}
-              <Link legacyBehavior href="/register">
-                <a className="underline font-semibold">Register here.</a>
-              </Link>
+          		<Link href="/register" className="underline font-semibold">Register here.</Link>
             </p>
           </div>
         </div>

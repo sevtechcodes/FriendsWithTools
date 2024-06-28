@@ -1,10 +1,11 @@
-import Login from './(auth)/login/page';
+'use server'
+import { redirect } from 'next/navigation';
 
-export default function Home () {
+export default async function Home () {
   return (
     <main>
       <div>
-		   <Login/>
+			 {redirect('/login')};
       </div>
     </main>
   );

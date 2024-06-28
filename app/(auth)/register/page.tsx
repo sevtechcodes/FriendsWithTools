@@ -1,4 +1,3 @@
-
 'use client';
 import Link from 'next/link';
 
@@ -14,7 +13,8 @@ const Register = () => {
               <input
                 type="text"
                 id="name"
-                placeholder="John Smith"
+                placeholder="Your Name"
+								required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
@@ -25,6 +25,7 @@ const Register = () => {
                 type="email"
                 id="email"
                 placeholder="your@email.com"
+								required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
@@ -35,6 +36,7 @@ const Register = () => {
                 type="password"
                 id="password"
                 placeholder="Password"
+								required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
@@ -45,6 +47,7 @@ const Register = () => {
                 type="password"
                 id="confirm-password"
                 placeholder="Password"
+								required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
@@ -56,7 +59,9 @@ const Register = () => {
             />
           </form>
           <div className="text-center pt-12 pb-12">
-            <p>Already have an account? <Link legacyBehavior href="/login"><a className="underline font-semibold">Log in here.</a></Link></p>
+            <p>Already have an account?{' '}
+						 <Link href="/login" className="underline font-semibold">Login here.</Link>
+					  </p>
           </div>
         </div>
       </div>
