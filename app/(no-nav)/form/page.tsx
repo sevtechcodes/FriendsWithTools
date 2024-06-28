@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/select';
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
+import { useRouter } from 'next/navigation';
 
 const Form = () => {
   const [input, setInput] = useState<ToolCard>({
@@ -31,7 +32,7 @@ const Form = () => {
   });
   const [categories, setCategories] = useState<ToolCategory[]>([]);
   const [image, setImage] = useState<File | null>(null); // State to store the selected image file
-
+  const router= useRouter();
   useEffect(() => {
     const fetchCategory = async () => {
       try {
@@ -104,7 +105,7 @@ const Form = () => {
     const data = {
       ...input,
     };
-    console.log('data', data);
+
 
     try {
       const response = await fetch('/api/form', {
@@ -131,6 +132,7 @@ const Form = () => {
         reviews: [],
         toolCategoryId: '',
       });
+      router.push('/rented');
     } catch (error) {
       console.error('Error submitting form:', error);
     }
