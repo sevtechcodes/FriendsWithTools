@@ -82,8 +82,20 @@ CREATE TABLE "Message" (
     CONSTRAINT "Message_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "_ToolCardToWishList" (
+    "A" TEXT NOT NULL,
+    "B" TEXT NOT NULL
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "WishList_ownerId_key" ON "WishList"("ownerId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "_ToolCardToWishList_AB_unique" ON "_ToolCardToWishList"("A", "B");
+
+-- CreateIndex
+CREATE INDEX "_ToolCardToWishList_B_index" ON "_ToolCardToWishList"("B");
 
 -- AddForeignKey
 ALTER TABLE "ToolCard" ADD CONSTRAINT "ToolCard_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -114,3 +126,9 @@ ALTER TABLE "Message" ADD CONSTRAINT "Message_authorId_fkey" FOREIGN KEY ("autho
 
 -- AddForeignKey
 ALTER TABLE "Message" ADD CONSTRAINT "Message_conversationId_fkey" FOREIGN KEY ("conversationId") REFERENCES "Conversation"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_ToolCardToWishList" ADD CONSTRAINT "_ToolCardToWishList_A_fkey" FOREIGN KEY ("A") REFERENCES "ToolCard"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_ToolCardToWishList" ADD CONSTRAINT "_ToolCardToWishList_B_fkey" FOREIGN KEY ("B") REFERENCES "WishList"("id") ON DELETE CASCADE ON UPDATE CASCADE;
