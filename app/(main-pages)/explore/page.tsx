@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { ToolCard } from '../../lib/types';
 import ToolCardComponent from '../../components/ToolCard';
+import uniqBy from 'lodash/uniqBy';
 
 const ToolsPage = () => {
   const [tools, setTools] = useState<ToolCard[]>([]);
@@ -48,7 +49,8 @@ const ToolsPage = () => {
   
   
   useEffect(() => { 
-    const updatedTools = [...favTools, ...allTools];
+    const updatedTools = uniqBy([...favTools, ...allTools], 'id');
+    console.log('updatedTools', updatedTools);
     setTools(updatedTools);
   }, [favTools, allTools]);
 
