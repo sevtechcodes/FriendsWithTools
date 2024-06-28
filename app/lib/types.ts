@@ -1,12 +1,12 @@
 
 
 export type User = {
-  _id: string;
+  id: string;
   name: string;
   lastName: string;
   email: string;
   password: string;
-  profilePicture: string;
+  profilePicture?: string | null;
   conversations: Conversation[];
   reviews: ToolsReviews[];
   listings: ToolCard[];
@@ -34,8 +34,9 @@ export type ToolCard = {
 export type WishList = {
   id: string;
   ownerId: string;
-  tools: ToolsOnWishlists[]
+  list?: ToolCard[]
 }
+
 
 export type ToolsOnWishlists = {
   toolId: string;
@@ -43,13 +44,13 @@ export type ToolsOnWishlists = {
 }
 
 export type ToolCategory = {
-  _id: string;
+  id: string;
   categoryName?: string;
   tools: ToolCard[];
 };
 
 export type ToolsReviews = {
-  _id: string;
+  id: string;
   authorId: string;
   content: string;
   createdAt: Date;
