@@ -23,6 +23,7 @@ const ToolsPage = ({
         const response = await fetch(`/api/tools?query=${query}`);
         console.log(response);
         const data: ToolCard[] = await response.json();
+        
         setTools(data);
         setLoading(false);
       } catch (error) {
