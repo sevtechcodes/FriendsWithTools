@@ -34,7 +34,7 @@ export type ToolCard = {
 export type WishList = {
   id: string;
   ownerId: string;
-  list?: ToolCard[]
+  list: ToolCard[]
 }
 
 

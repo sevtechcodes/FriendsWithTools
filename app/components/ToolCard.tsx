@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 import { ToolCard as ToolType } from '../lib/types';
 import {
@@ -5,11 +6,12 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { User } from '@prisma/client';
+import prisma from '@/prisma/db';
 
 
 export interface ToolCardProps {
   tool: ToolType;
-  user: User;
+
 }
 
 const ToolCardComponent =  ( { tool }: ToolCardProps ) => {
@@ -21,7 +23,7 @@ const ToolCardComponent =  ( { tool }: ToolCardProps ) => {
   const handleLike = async () => {
     tool.liked = tool.liked ? false : true;
     setIsFavorite(isFavorite ? false : true);
-
+    
     try {
       const response = await fetch('/api/wishlist', {
         method: 'POST',
@@ -32,25 +34,11 @@ const ToolCardComponent =  ( { tool }: ToolCardProps ) => {
       });
       console.log('gjkfhdgjkfdhsgkhfds', tool);
       const responseData = await response.json();
-      console.log('API response:', responseData);
+      console.log('WishList created', responseData);
       
     } catch (error) {
       console.error('Error adding to wishlist', error);
     }
-    // .then(async response => {
-    //   if (!response.ok) {
-    //     console.log('gfdgsdfgd', await response.json());
-    //     throw new Error('Network response was not ok');
-    //   }
-    //   return response.json();
-    // })
-    // .then(data => {
-    //   console.log('Success:', data);
-    // })
-    // .catch(error => {
-    //   console.error('There was a problem with the fetch operation:', error);
-    // });
-
   };
 
   return (

@@ -14,6 +14,11 @@ const WishlistPage = () => {
       try {
         const response = await fetch('/api/wishlist');
         const data: ToolCard[] = await response.json();
+
+        data.forEach((el) => {
+          el.liked = true;
+        });
+        
         setFavTools(data);
         setLoading(false);
       } catch (error) {
@@ -21,8 +26,8 @@ const WishlistPage = () => {
         setLoading(false);
       }
     };
-
     fetchTools();
+    console.log('favTools',  favTools);
   }, []);
 
 
@@ -44,9 +49,7 @@ const WishlistPage = () => {
           :
           favTools.map((tool) => (
             <div key={tool.id} className='tool-item'>
-              <Link href={`/tools/${tool.id}`}>
-                <ToolCardComponent tool={tool} />
-              </Link>
+              <ToolCardComponent tool={tool} />
             </div>
           ))}
       </div>

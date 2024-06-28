@@ -2,10 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '../../../prisma/db'; 
 import { WishList } from '../../lib/types';
 
+
 export async function GET (request: NextRequest) {
+  console.log('hello');
+  
   try {
-    const wishList = await prisma.wishList.findUnique({where: {ownerId: '5d8ec93b-05e9-4132-bdc4-f9a1102c1db3'}});
-    return NextResponse.json(wishList);
+    const wishList: WishList= await prisma.wishList.findFirst({ where: { ownerId: process.env.CURRENT_USERID }, include: {list: true} });
+    console.log('wishlist in GET', wishList);
+    
+    return NextResponse.json(wishList.list);
   } catch (error) {
     return NextResponse.json({ error: 'Failed to fetch favorited tools' }, { status: 500 });
   }
@@ -13,12 +18,23 @@ export async function GET (request: NextRequest) {
 
 export async function POST (request: NextRequest) { //?
   let favedTool = await request.json();
-  console.log('before try favedTool', favedTool);
-  console.log('favedTool id', favedTool.id);
+  
+  console.log('rfdgfsgsdf', favedTool.liked);
+
   try {
-    const wishlist: Partial<WishList> = await prisma.wishList.create({
-      data: {
-        ownerId: '5d8ec93b-05e9-4132-bdc4-f9a1102c1db3',
+    const wishlist: Partial<WishList> = await prisma.wishList.upsert({
+      where: {
+        ownerId: process.env.CURRENT_USERID,
+      },
+      update: {
+        list: {
+          ...!favedTool.liked ? { disconnect: [{ id: favedTool.id }] }
+            :
+            { connect: [{ id: favedTool.id }] }
+        }
+      },
+      create: {
+        ownerId: process.env.CURRENT_USERID,
         list: {
           connect: [{id: favedTool.id}]
         }
