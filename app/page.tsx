@@ -5,11 +5,8 @@ export default function Home () {
   return (
     <main>
       <div>
-			<h1>Explore Page</h1>
-			<Login></Login>
-        
+		   <Login></Login>  
       </div>
-      <h1>Explore Page</h1>
     </main>
   );
 }
