@@ -162,7 +162,7 @@ const Form = () => {
             onSubmit={handleSubmit}
             className='flex flex-col bg-white shadow-md rounded px-8 pt-1 pb-8 '
           >
-            <label htmlFor='name' className='mb-1 mt-5'>
+            <label htmlFor='name' className='mb-1 mt-1'>
             Product Name
             </label>
             <input
@@ -175,7 +175,7 @@ const Form = () => {
               onChange={handleChange}
               required
             />
-            <label htmlFor='description' className='mb-1 mt-5'>
+            <label htmlFor='description' className='mb-1 mt-1'>
             Product Description
             </label>
             <input
@@ -188,7 +188,7 @@ const Form = () => {
               onChange={handleChange}
               required
             />
-            <label htmlFor='location' className='mb-1 mt-5'>
+            <label htmlFor='location' className='mb-1 mt-1'>
             Pick up address
             </label>
             <input
@@ -202,11 +202,11 @@ const Form = () => {
               required
             />
             <div className='flex flex-row justify-between'>
-              <label htmlFor='dailyRate' className='mb-1 mt-5'>
+              <label htmlFor='dailyRate' className='mb-1 mt-1'>
               Daily rate
               </label>
               <input
-                className='mb-4 border-b-2 w-20 mt-4'
+                className='mb-4 border-b-2 w-20 mt-1'
                 id='dailyRate'
                 name='dailyRate'
                 type='number'
@@ -217,11 +217,11 @@ const Form = () => {
               />
             </div>
             <div className='flex flex-row justify-between'>
-              <label htmlFor='weeklyRate' className='mb-1 mt-5'>
+              <label htmlFor='weeklyRate' className='mb-1 mt-1'>
               Weekly rate
               </label>
               <input
-                className='mb-4 border-b-2 w-20 mt-4'
+                className='mb-4 border-b-2 w-20 mt-1'
                 id='weeklyRate'
                 name='weeklyRate'
                 type='number'
@@ -230,7 +230,7 @@ const Form = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className='flex flex-row justify-between mt-5'>
+            <div className='flex flex-row justify-between mt-1'>
               <label htmlFor='monthlyRate' className='mb-1'>
               Monthly rate
               </label>
@@ -245,12 +245,12 @@ const Form = () => {
               />
             </div>
             <div className='flex flex-col justify-between'>
-              <label htmlFor='image' className='mb-5'>
+              <label htmlFor='image' className='mb-4'>
               Product image
               </label>
               <Input id="picture" type="file" onChange={handleFileChange} className='bg-darkGreen p-2 text-white text-sm rounded-md'/>
             </div>
-            <div className='flex flex-row justify-between mt-5 mb-10'>
+            <div className='flex flex-row justify-between mt-4 mb-10'>
               <label htmlFor='category' className='mb-1 mt-5'>
               Category
               </label>
