@@ -25,11 +25,11 @@ const NavBar = () => {
             }
           />
         </Link>
-        <Link href={'/whishlist'}>
+        <Link href={'/wishlist'}>
           {/* test */}
           <HeartIcon
             className={
-              currentPath === '/whishlist'
+              currentPath === '/wishlist'
                 ? 'size-8 stroke-darkGreen stroke-2'
                 : 'size-8 stroke-grey stroke-2'
             }

@@ -3,11 +3,11 @@ import prisma from '../../../prisma/db';
 
 export async function GET (request: NextRequest) {
   try {
-    const tools = await prisma.toolCard.findMany();
-    return NextResponse.json(tools);
+    const categories = await prisma.toolCategory.findMany();
+    return NextResponse.json(categories);
   } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to fetch tools' },
+      { error: 'Failed to fetch categories' },
       { status: 500 }
     );
   }

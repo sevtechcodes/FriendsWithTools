@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
-import './globals.css'
+import './globals.css';
 const roboto = Roboto({
   weight: '400',
   subsets: ['latin'],
@@ -12,14 +12,14 @@ export const metadata: Metadata = {
   description: 'Rent tools from your neighbors',
 };
 
-export default function RootLayout({
+export default function RootLayout ({
   children,
 }:{
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <body className={roboto.className}>
+    <html lang='en' className='h-full'>
+      <body className={`${roboto.className}, h-full`}>
         {children}
       </body>
     </html>

@@ -93,10 +93,9 @@ const ToolCardComponent = ({ tool }: ToolCardProps) => {
 
   return (
     <div className="border-slate-50 border-4 p-4 rounded-xl shadow-md flex flex-col items-center m-4">
-      <div
-        className="relative w-full h-64 rounded-m overflow-hidden bg-cover bg-center"
-        style={{ backgroundImage: `url(${tool.picture || defaultImage})` }}
-      >
+      {/* Photo with Like button */}
+      <div className="relative w-full h-64 rounded-m overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: `url(${tool.picture || defaultImage})` }}>
         <div className="absolute top-0 right-0 m-2">
           <Liked />
         </div>
