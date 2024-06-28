@@ -6,15 +6,34 @@ import ToolCardComponent from '../../components/ToolCard';
 
 const ToolsPage = () => {
   const [tools, setTools] = useState<ToolCard[]>([]);
+  const [allTools, setAllTools] = useState<ToolCard[]>([]);
+  const [favTools, setFavTools] = useState<ToolCard[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-
+  
   useEffect(() => {
-    const fetchTools = async () => {
+
+    const fetchAllTools = async () => {
       try {
         const response = await fetch('/api/tools');
         const data: ToolCard[] = await response.json();
         
-        setTools(data);
+        setAllTools(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Failed to fetch tools:', error);
+        setLoading(false);
+      }
+    };
+    const fetchFavTools = async () => {
+      try {
+        const response = await fetch('/api/wishlist');
+        const data: ToolCard[] = await response.json();
+
+        data.forEach((el) => {
+          el.liked = true;
+        });
+        
+        setFavTools(data);
         setLoading(false);
       } catch (error) {
         console.error('Failed to fetch tools:', error);
@@ -22,8 +41,16 @@ const ToolsPage = () => {
       }
     };
 
-    fetchTools();
+    fetchAllTools();
+    fetchFavTools();
+    
   }, []);
+  
+  
+  useEffect(() => { 
+    const updatedTools = [...favTools, ...allTools];
+    setTools(updatedTools);
+  }, [favTools, allTools]);
 
   if (loading) {
     return <div>Loading...</div>;
