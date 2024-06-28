@@ -145,10 +145,10 @@ const Form = () => {
 
   return (
     <>
-      <header className='border-grey h-20 shadow-md mb-5 bg-slate-200 '>
+      <header className='flex justify-start pt-4 pl-5  border-grey h-20 shadow-md mb-5 bg-slate-200 '>
         <Link href='/rented'>
           {/* <ChevronLeftIcon className='h-15 w-11  border ml-5 pt-5'/> */}
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-12 ml-5">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-12 ">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
           </svg>
 
@@ -160,7 +160,7 @@ const Form = () => {
 
           <form
             onSubmit={handleSubmit}
-            className='flex flex-col bg-white shadow-md rounded px-8 pt-1 pb-8 '
+            className='flex flex-col bg-white shadow-md rounded px-8 pt-1 pb-8 mt-6 '
           >
             <label htmlFor='name' className='mb-1 mt-1'>
             Product Name
