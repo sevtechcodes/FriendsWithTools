@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const requests = await prisma.request.findMany({
+    const requests = await prisma.toolRequest.findMany({
       where: {
         userId: userId,
       },
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
     const { toolId, userId, status } = await request.json();
     console.log(toolId, userId, status)
 
-    const newRequest = await prisma.request.create({
+    const newRequest = await prisma.toolRequest.create({
       data: {
         id: uuidv4(),
         status,
