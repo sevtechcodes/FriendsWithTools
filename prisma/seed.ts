@@ -1,6 +1,6 @@
 import { PrismaClient, Prisma } from '@prisma/client';
 import { v4 as uuidv4 } from 'uuid';
-import { User, ToolCard, ToolCategory, ToolsReviews, Conversation, Message, Request } from '@/app/lib/types';
+import { User, ToolCard, ToolCategory, ToolsReviews, Conversation, Message, ToolRequest } from '@/app/lib/types';
 import prisma from './db';
 
 // Define your Prisma client instance
@@ -19,7 +19,7 @@ async function main() {
       reviews: [],
       listings: [],
       messages: [],
-      requests: []
+      toolrequests: []
     },
     {
       id: uuidv4(),
@@ -32,7 +32,7 @@ async function main() {
       reviews: [],
       listings: [],
       messages: [],
-      requests: []
+      toolrequests: []
     }
   ];
 
@@ -64,7 +64,7 @@ async function main() {
       reviews: [],
       ownerId: users[0].id,
       toolCategoryId: toolCategories[0].id,
-      requests: []
+      toolrequests: []
     },
     {
       id: uuidv4(),
@@ -80,7 +80,7 @@ async function main() {
       reviews: [],
       ownerId: users[1].id,
       toolCategoryId: toolCategories[1].id,
-      requests: []
+      toolrequests: []
     }
   ];
 
@@ -137,7 +137,7 @@ async function main() {
     }
   ];
 
-  const requests: Request[] = [
+  const toolrequests: ToolRequest[] = [
     {
       id: uuidv4(),
       status: 'pending',
@@ -275,14 +275,14 @@ async function main() {
     });
   }
 
-  for (const request of requests) {
-    await prisma.request.create({
+  for (const toolrequest of toolrequests) {
+    await prisma.toolRequest.create({
       data: {
-        id: request.id,
-        status: request.status,
-        createdAt: request.createdAt,
-        toolId: request.toolId,
-        userId: request.userId
+        id: toolrequest.id,
+        status: toolrequest.status,
+        createdAt: toolrequest.createdAt,
+        toolId: toolrequest.toolId,
+        userId: toolrequest.userId
       }
     });
   }

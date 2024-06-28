@@ -67,14 +67,14 @@ CREATE TABLE "Message" (
 );
 
 -- CreateTable
-CREATE TABLE "Request" (
+CREATE TABLE "ToolRequest" (
     "id" TEXT NOT NULL,
     "status" TEXT NOT NULL,
     "toolId" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "Request_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "ToolRequest_pkey" PRIMARY KEY ("id")
 );
 
 -- AddForeignKey
@@ -99,7 +99,7 @@ ALTER TABLE "Message" ADD CONSTRAINT "Message_authorId_fkey" FOREIGN KEY ("autho
 ALTER TABLE "Message" ADD CONSTRAINT "Message_conversationId_fkey" FOREIGN KEY ("conversationId") REFERENCES "Conversation"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Request" ADD CONSTRAINT "Request_toolId_fkey" FOREIGN KEY ("toolId") REFERENCES "ToolCard"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ToolRequest" ADD CONSTRAINT "ToolRequest_toolId_fkey" FOREIGN KEY ("toolId") REFERENCES "ToolCard"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Request" ADD CONSTRAINT "Request_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ToolRequest" ADD CONSTRAINT "ToolRequest_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

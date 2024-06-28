@@ -24,7 +24,7 @@ model User {
   reviews        ToolsReviews[]
   listings       ToolCard[]
   messages       Message[]
-  requests       Request[]
+  toolrequests   ToolRequest[]
 }
 
 model ToolCard {
@@ -39,7 +39,7 @@ model ToolCard {
   liked       Boolean
   available   Boolean
   reviews     ToolsReviews[]
-  requests    Request[]
+  toolrequests    ToolRequest[]
 
   ownerId        String
   owner          User         @relation(fields: [ownerId], references: [id])
@@ -84,7 +84,7 @@ model Message {
   conversation   Conversation @relation(fields: [conversationId], references: [id])
 }
 
-model Request {
+model ToolRequest {
   id        String   @id @default(uuid())
   status    String
   toolId    String

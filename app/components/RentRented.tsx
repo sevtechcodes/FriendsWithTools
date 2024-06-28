@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ToolsToRent from './ToolsToRent';
 import MyRequests from './MyRequests';
-import { ToolCard as ToolType, Request as RequestType } from '../lib/types';
+import { ToolCard as ToolType, ToolRequest as RequestType } from '../lib/types';
 
 const fetchTools = async (ownerId: string): Promise<ToolType[]> => {
   try {
@@ -34,8 +34,8 @@ const RentRented = () => {
   const testUserId = process.env.HARDCODED_ID
 
   useEffect(() => {
-    const ownerId = testUserId; // Replace with the actual ownerId
-    const userId = testUserId; // Replace with the actual userId
+    const ownerId = '64243b6a-2c1b-4277-b77f-0cf29fe39109'; // Replace with the actual ownerId
+    const userId = '64243b6a-2c1b-4277-b77f-0cf29fe39109'; // Replace with the actual userId
 
     if (activeComponent === 'toolsToRent') {
       fetchTools(ownerId).then(setTools);

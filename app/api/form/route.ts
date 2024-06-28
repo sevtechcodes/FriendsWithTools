@@ -17,7 +17,7 @@ export async function POST (request: NextRequest) {
       available,
       ownerId,
       toolCategoryId,
-      requests,
+      toolrequests,
     } = addedTool;
     
     const newTool = await prisma.toolCard.create({
@@ -34,7 +34,7 @@ export async function POST (request: NextRequest) {
         available,
         ownerId,
         toolCategoryId,
-        requests,
+        toolrequests,
       },
     });
     return NextResponse.json({ data: newTool }, { status: 200 });
