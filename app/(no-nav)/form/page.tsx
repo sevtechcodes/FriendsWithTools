@@ -4,7 +4,6 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { storage } from '@/lib/firebase';
 import { ToolCategory, ToolCard } from '../../lib/types';
 import { v4 as uuidv4 } from 'uuid';
-import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import {
   Select,
   SelectContent,
@@ -248,7 +247,7 @@ const Form = () => {
               <label htmlFor='image' className='mb-4'>
               Product image
               </label>
-              <Input id="picture" type="file" onChange={handleFileChange} className='bg-darkGreen p-2 text-white text-sm rounded-md'/>
+              <Input id="picture" type="file" onChange={handleFileChange} className='bg-darkGreen p-2 text-white text-sm rounded-md pl-8'/>
             </div>
             <div className='flex flex-row justify-between mt-4 mb-10'>
               <label htmlFor='category' className='mb-1 mt-5'>
