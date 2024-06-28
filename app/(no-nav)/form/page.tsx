@@ -20,14 +20,15 @@ const Form = () => {
     name: '',
     description: '',
     location: '',
-    dailyRate: '',
+    dailyRate: 0,
     picture: '', // Added for picture state
     liked: false,
     available: true,
-    ownerId: 'f4bb67e8-bcc9-4498-ade3-7cce2b8d65ce',
+    ownerId: 'cbbf66cb-70d5-458d-aa70-8960eedfeaf9', // Replace with the actual user ID
     id: uuidv4(),
     reviews: [],
     toolCategoryId: '',
+    requests: []
 
   });
   const [categories, setCategories] = useState<ToolCategory[]>([]);
@@ -122,15 +123,16 @@ const Form = () => {
         name: '',
         description: '',
         location: '',
-        dailyRate: '',
+        dailyRate: 0,
         weeklyRate: 0,
         monthlyRate: 0,
         liked: false,
         available: true,
-        ownerId: 'f4bb67e8-bcc9-4498-ade3-7cce2b8d65ce',
+        ownerId: 'cbbf66cb-70d5-458d-aa70-8960eedfeaf9', // Replace with the actual 
         id: uuidv4(),
         reviews: [],
         toolCategoryId: '',
+        requests: []
       });
       router.push('/rented');
     } catch (error) {

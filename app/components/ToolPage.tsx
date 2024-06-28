@@ -57,7 +57,7 @@
 
 
 import React from 'react';
-import { ToolCard as ToolType } from '../lib/types';
+import { ToolCard as ToolType} from '../lib/types';
 import Liked from './Liked';
 
 export interface ToolCardProps {
@@ -66,7 +66,7 @@ export interface ToolCardProps {
 
 const ToolCardComponent = ({ tool }: ToolCardProps) => {
   const defaultImage = 'https://shorturl.at/PyeKu'; 
-
+  const testUserId = process.env.HARDCODED_ID
   const handleRentClick = async () => {
     try {
       const response = await fetch('/api/myRequests', {
@@ -76,7 +76,7 @@ const ToolCardComponent = ({ tool }: ToolCardProps) => {
         },
         body: JSON.stringify({
           toolId: tool.id,
-          userId: '1763e228-4944-4067-b504-0151e443dfd5', // Replace with the actual user ID
+          userId: testUserId, // Replace with the actual user ID
           status: 'accepted',
         }),
       });

@@ -1,7 +1,7 @@
 import { isString } from 'util';
 
 export type User = {
-  _id: string;
+  id: string;
   name: string;
   lastName: string;
   email: string;
@@ -19,7 +19,7 @@ export type ToolCard = {
   name: string;
   description: string;
   location: string;
-  dailyRate: number | string;
+  dailyRate: number;
   weeklyRate?: number;
   monthlyRate?: number;
   picture?: string;
@@ -38,7 +38,7 @@ export type ToolCategory = {
 };
 
 export type ToolsReviews = {
-  _id: string;
+  id: string;
   authorId: string;
   content: string;
   createdAt: Date;

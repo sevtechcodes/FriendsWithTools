@@ -31,10 +31,11 @@ const RentRented = () => {
   const [activeComponent, setActiveComponent] = useState<string>('toolsToRent');
   const [tools, setTools] = useState<ToolType[]>([]);
   const [requests, setRequests] = useState<RequestType[]>([]);
+  const testUserId = process.env.HARDCODED_ID
 
   useEffect(() => {
-    const ownerId = '1763e228-4944-4067-b504-0151e443dfd5'; // Replace with the actual ownerId
-    const userId = '1763e228-4944-4067-b504-0151e443dfd5'; // Replace with the actual userId
+    const ownerId = testUserId; // Replace with the actual ownerId
+    const userId = testUserId; // Replace with the actual userId
 
     if (activeComponent === 'toolsToRent') {
       fetchTools(ownerId).then(setTools);
