@@ -54,7 +54,7 @@ const Form = () => {
 
     fetchCategory();
   }, []);
-  console.log(categories);
+
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -89,7 +89,7 @@ const Form = () => {
       });
 
       const responseData = await response.json();
-      console.log('API response:', responseData);
+
     } catch (error) {
       console.error('Error submitting form:', error);
     }

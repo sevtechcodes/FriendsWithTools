@@ -1,7 +1,6 @@
 'use client';
 import ToolCardComponent from '@/app/components/ToolCard';
 import { ToolCard } from '../../lib/types';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const WishlistPage = () => {
@@ -27,7 +26,7 @@ const WishlistPage = () => {
       }
     };
     fetchTools();
-    console.log('favTools',  favTools);
+
   }, []);
 
 

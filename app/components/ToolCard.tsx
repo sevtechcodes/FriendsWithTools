@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState } from 'react';
 import { ToolCard as ToolType } from '../lib/types';
 import {
@@ -32,9 +32,9 @@ const ToolCardComponent =  ( { tool }: ToolCardProps ) => {
         },
         body: JSON.stringify(tool)
       });
-      console.log('gjkfhdgjkfdhsgkhfds', tool);
+
       const responseData = await response.json();
-      console.log('WishList created', responseData);
+      console.log('WishList created', responseData); // leave this one for debugging later :)
       
     } catch (error) {
       console.error('Error adding to wishlist', error);

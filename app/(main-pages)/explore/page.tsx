@@ -50,7 +50,6 @@ const ToolsPage = () => {
   
   useEffect(() => { 
     const updatedTools = uniqBy([...favTools, ...allTools], 'id');
-    console.log('updatedTools', updatedTools);
     setTools(updatedTools);
   }, [favTools, allTools]);
 

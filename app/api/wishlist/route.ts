@@ -4,11 +4,11 @@ import { WishList } from '../../lib/types';
 
 
 export async function GET (request: NextRequest) {
-  console.log('hello');
+
   
   try {
     const wishList: WishList= await prisma.wishList.findFirst({ where: { ownerId: process.env.CURRENT_USERID }, include: {list: true} });
-    console.log('wishlist in GET', wishList);
+
     
     return NextResponse.json(wishList.list);
   } catch (error) {
@@ -19,7 +19,7 @@ export async function GET (request: NextRequest) {
 export async function POST (request: NextRequest) { //?
   let favedTool = await request.json();
   
-  console.log('rfdgfsgsdf', favedTool.liked);
+
 
   try {
     const wishlist: Partial<WishList> = await prisma.wishList.upsert({
@@ -40,7 +40,7 @@ export async function POST (request: NextRequest) { //?
         }
       },
     });
-    console.log('favedTool', favedTool);
+
     return NextResponse.json(wishlist);
   } catch (error) {
     console.error(error);
