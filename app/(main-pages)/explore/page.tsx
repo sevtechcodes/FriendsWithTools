@@ -34,12 +34,27 @@ const ToolsPage = ({
     fetchTools();
   }, [query]);
 
+  useEffect(() => {
+    const fetchTools = async () => {
+      try {
+        const response = await fetch(`/api/search?query=${query}`);
+        console.log(response);
+        const data: ToolCard[] = await response.json();
+        setTools(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Failed to fetch tools:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchTools();
+  }, [query]);
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  // const query = searchParams?.query || '';
-  // console.log('query', query);
   return (
     <div className='container mx-auto px-2 py-2'>
       <h1 className='text-2xl font-bold mb-4 text-center'>
