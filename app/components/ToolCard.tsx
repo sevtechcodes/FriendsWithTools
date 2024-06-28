@@ -9,11 +9,12 @@ export interface ToolCardProps {
 
 const ToolCardComponent = ({ tool, query }: ToolCardProps) => {
   const defaultImage = 'https://shorturl.at/PyeKu'; //place holder image
+	//I have switched the place of defaultImage to show first, for now.
   return (
     <div className=' border-slate-50 border-4 p-4 rounded-xl shadow-md flex flex-col items-center m-4'>
       <div
         className='relative h-64 rounded-m overflow-hidden bg-cover w-80 bg-center '
-        style={{ backgroundImage: `url(${tool.picture || defaultImage})` }}
+        style={{ backgroundImage: `url(${defaultImage || tool.picture})` }}
       >
         <div className='relative'>
           <Liked />
