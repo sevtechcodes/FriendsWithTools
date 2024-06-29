@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { ToolCard as ToolType } from '../lib/types';
+import { ToolCard } from '../lib/types';
 import {
   HeartIcon
 } from '@heroicons/react/24/outline';
@@ -10,17 +10,17 @@ import prisma from '@/prisma/db';
 
 
 export interface ToolCardProps {
-  tool: ToolType;
+  tool: ToolCard;
 
 }
 
 const ToolCardComponent =  ( { tool }: ToolCardProps ) => {
   const defaultImage = 'https://shorturl.at/PyeKu'; //place holder image
 
-  //TODO add filtering so if toolCard found in user wishlist, it will be disconnected
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleLike = async () => {
+    
     tool.liked = tool.liked ? false : true;
     setIsFavorite(isFavorite ? false : true);
     
