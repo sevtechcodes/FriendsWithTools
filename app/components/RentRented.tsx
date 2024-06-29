@@ -31,7 +31,7 @@ const RentRented = () => {
   const [activeComponent, setActiveComponent] = useState<string>('toolsToRent');
   const [tools, setTools] = useState<ToolType[]>([]);
   const [requests, setRequests] = useState<RequestType[]>([]);
-  const testUserId = process.env.HARDCODED_ID
+  const testUserId = process.env.HARDCODED_ID;
 
   useEffect(() => {
     const ownerId = process.env.CURRENT_USERID; // Replace with the actual ownerId

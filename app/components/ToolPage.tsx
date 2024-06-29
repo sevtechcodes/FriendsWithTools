@@ -7,7 +7,7 @@ export interface ToolCardProps {
 
 const ToolCardComponent = ({ tool }: ToolCardProps) => {
   const defaultImage = 'https://shorturl.at/PyeKu'; 
-  const testUserId = process.env.HARDCODED_ID
+  const testUserId = process.env.HARDCODED_ID;
   const handleRentClick = async () => {
     try {
       const response = await fetch('/api/myRequests', {
