@@ -9,10 +9,13 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  // url      = env("DATABASE_URL")
+  url       = env("SUPABASE_DATABASE_URL") //Supabase has been my go-to backend provider
+  directUrl = env("SUPABASE_DIRECT_URL")
 }
 
+// User - Associated with a clerk user
 model User {
   id             String         @id @default(uuid())
   name           String
@@ -25,21 +28,25 @@ model User {
   listings       ToolCard[]
   messages       Message[]
   toolrequests   ToolRequest[]
+  // User - Associated with a clerk user
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  clerkUserId    String?        @unique
 }
 
 model ToolCard {
-  id          String         @id @default(uuid())
-  name        String
-  description String
-  location    String
-  dailyRate   Int
-  weeklyRate  Int?
-  monthlyRate Int?
-  picture     String?
-  liked       Boolean
-  available   Boolean
-  reviews     ToolsReviews[]
-  toolrequests    ToolRequest[]
+  id           String         @id @default(uuid())
+  name         String
+  description  String
+  location     String
+  dailyRate    Int
+  weeklyRate   Int?
+  monthlyRate  Int?
+  picture      String?
+  liked        Boolean
+  available    Boolean
+  reviews      ToolsReviews[]
+  toolrequests ToolRequest[]
 
   ownerId        String
   owner          User         @relation(fields: [ownerId], references: [id])

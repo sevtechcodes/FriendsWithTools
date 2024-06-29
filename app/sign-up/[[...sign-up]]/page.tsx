@@ -2,6 +2,7 @@
 
 import * as Clerk from '@clerk/elements/common';
 import * as SignUp from '@clerk/elements/sign-up';
+import Link from 'next/link';
 
 export default function SignUpPage() {
   return (
@@ -93,15 +94,13 @@ export default function SignUpPage() {
               Finish registration
             </SignUp.Action>
           </SignUp.Strategy>
-          <p className="text-center text-sm text-zinc-400">
-            Have an account?{' '}
-            <a
-              href="#"
-              className="font-medium text-white decoration-white/20 underline-offset-4 outline-none hover:underline focus-visible:underline"
-            >
-              Sign in
-            </a>
-          </p>
+					<div className="text-center pt-12 pb-12">
+            <p>
+              No account yet?{' '}
+          		<Link href="/sign-up" className="underline font-semibold">Register here.</Link>
+            </p>
+          </div>
+
         </SignUp.Step>
       </SignUp.Root>
     </div>
