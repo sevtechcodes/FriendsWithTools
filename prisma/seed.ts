@@ -1,10 +1,6 @@
-import { PrismaClient, Prisma } from '@prisma/client';
 import { v4 as uuidv4 } from 'uuid';
-import { User, ToolCard, ToolCategory, ToolsReviews, Conversation, Message } from '@/app/lib/types';
+import { User, ToolCard, ToolCategory, ToolsReviews, Conversation, Message, ToolRequest } from '@/app/lib/types';
 import prisma from './db';
-
-// Define your Prisma client instance
-// const prisma = new PrismaClient();
 
 async function main () {
   const users: User[] = [
@@ -18,7 +14,8 @@ async function main () {
       conversations: [],
       reviews: [],
       listings: [],
-      messages: []
+      messages: [],
+      toolrequests: []
     },
     {
       id: uuidv4(),
@@ -30,7 +27,8 @@ async function main () {
       conversations: [],
       reviews: [],
       listings: [],
-      messages: []
+      messages: [],
+      toolrequests: []
     }
   ];
 
@@ -62,7 +60,8 @@ async function main () {
       reviews: [],
       ownerId: users[0].id,
       toolCategoryId: toolCategories[0].id,
-      wishlists: []
+      toolrequests: [],
+      wishlists: [],
     },
     {
       id: uuidv4(),
@@ -78,7 +77,8 @@ async function main () {
       reviews: [],
       ownerId: users[1].id,
       toolCategoryId: toolCategories[1].id,
-      wishlists: []
+      toolrequests: [],
+      wishlists: [],
     }
   ];
 
@@ -135,6 +135,30 @@ async function main () {
     }
   ];
 
+  const toolrequests: ToolRequest[] = [
+    {
+      id: uuidv4(),
+      status: 'pending',
+      createdAt: new Date(),
+      toolId: toolCards[0].id,
+      userId: users[0].id,
+    },
+    {
+      id: uuidv4(),
+      status: 'accepted',
+      createdAt: new Date(),
+      toolId: toolCards[1].id,
+      userId: users[0].id,
+    },
+    {
+      id: uuidv4(),
+      status: 'declined',
+      createdAt: new Date(),
+      toolId: toolCards[0].id,
+      userId: users[0].id,
+    },
+  ];
+
   for (const user of users) {
     await prisma.user.create({
       data: {
@@ -147,7 +171,6 @@ async function main () {
       }
     });
   }
-
   
   for (const category of toolCategories) {
     await prisma.toolCategory.create({
@@ -246,6 +269,18 @@ async function main () {
         createdAt: message.createdAt,
         authorId: message.authorId,
         conversationId: message.conversationId
+      }
+    });
+  }
+
+  for (const toolrequest of toolrequests) {
+    await prisma.toolrequest.create({
+      data: {
+        id: toolrequest.id,
+        status: toolrequest.status,
+        createdAt: toolrequest.createdAt,
+        toolId: toolrequest.toolId,
+        userId: toolrequest.userId
       }
     });
   }

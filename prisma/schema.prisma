@@ -25,6 +25,7 @@ model User {
   listings       ToolCard[]
   messages       Message[]
   wishlist       WishList[]
+  toolrequests   ToolRequest[]
 }
 
 model ToolCard {
@@ -39,8 +40,9 @@ model ToolCard {
   liked          Boolean
   available      Boolean
   reviews        ToolsReviews[]
+  toolrequests    ToolRequest[]
   ownerId        String
-  owner          User               @relation(fields: [ownerId], references: [id])
+  owner          User              @relation(fields: [ownerId], references: [id])
   toolCategoryId String
   ToolCategory   ToolCategory       @relation(fields: [toolCategoryId], references: [id])
   wishlists      ToolsOnWishlists[]
@@ -95,4 +97,14 @@ model Message {
   author         User         @relation(fields: [authorId], references: [id])
   conversationId String
   conversation   Conversation @relation(fields: [conversationId], references: [id])
+}
+
+model ToolRequest {
+  id        String   @id @default(uuid())
+  status    String
+  toolId    String
+  tool      ToolCard @relation(fields: [toolId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
 }

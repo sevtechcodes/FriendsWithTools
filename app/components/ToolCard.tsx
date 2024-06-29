@@ -5,25 +5,22 @@ import {
   HeartIcon
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { User } from '@prisma/client';
-import prisma from '@/prisma/db';
 
 
 export interface ToolCardProps {
   tool: ToolCard;
-
 }
 
-const ToolCardComponent =  ( { tool }: ToolCardProps ) => {
+const ToolCardComponent = ({ tool}: ToolCardProps) => {
   const defaultImage = 'https://shorturl.at/PyeKu'; //place holder image
 
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleLike = async () => {
-    
+    //to instantly change heart color
     tool.liked = tool.liked ? false : true;
     setIsFavorite(isFavorite ? false : true);
-    
+    //to post card to wishlist -> this method handles both add & remove from user wishlist
     try {
       const response = await fetch('/api/wishlist', {
         method: 'POST',

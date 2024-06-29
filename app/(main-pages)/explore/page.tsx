@@ -5,19 +5,25 @@ import { ToolCard } from '../../lib/types';
 import ToolCardComponent from '../../components/ToolCard';
 import uniqBy from 'lodash/uniqBy';
 
-const ToolsPage = () => {
+const ToolsPage = ({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+  };
+
+}) => {
   const [tools, setTools] = useState<ToolCard[]>([]);
   const [allTools, setAllTools] = useState<ToolCard[]>([]);
   const [favTools, setFavTools] = useState<ToolCard[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  
-  useEffect(() => {
+  const query = searchParams?.query || '';
 
+  useEffect(() => {
     const fetchAllTools = async () => {
       try {
-        const response = await fetch('/api/tools');
+        const response = await fetch(`/api/search?query=${query}`);
         const data: ToolCard[] = await response.json();
-        
         setAllTools(data);
         setLoading(false);
       } catch (error) {
@@ -25,6 +31,7 @@ const ToolsPage = () => {
         setLoading(false);
       }
     };
+
     const fetchFavTools = async () => {
       try {
         const response = await fetch('/api/wishlist');
@@ -41,11 +48,10 @@ const ToolsPage = () => {
         setLoading(false);
       }
     };
-
     fetchAllTools();
     fetchFavTools();
     
-  }, []);
+  }, [query]);
   
   
   useEffect(() => { 

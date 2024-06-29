@@ -12,6 +12,7 @@ export type User = {
   listings: ToolCard[];
   messages: Message[];
   wishlist?: WishList;
+  toolrequests: ToolRequest[];
 };
 
 export type ToolCard = {
@@ -29,6 +30,7 @@ export type ToolCard = {
   ownerId: string;
   toolCategoryId: string;
   wishlists: ToolsOnWishlists[];
+  toolrequests: ToolRequest[];
 };
 
 export type WishList = {
@@ -72,4 +74,12 @@ export type Message = {
   author: User;
   conversationId: string;
   conversation: Conversation;
+};
+
+export type ToolRequest = {
+  id: string;
+  status: string;
+  createdAt: Date;
+  toolId: string;
+  userId: string;
 };
