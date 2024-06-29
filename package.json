@@ -13,6 +13,7 @@
     "prisma:migrate": "prisma migrate dev --dotenv .env.local"
   },
   "dependencies": {
+    "@clerk/nextjs": "^5.1.6",
     "@heroicons/react": "^2.1.4",
     "@prisma/client": "^5.15.1",
     "@radix-ui/react-avatar": "^1.1.0",

@@ -1,6 +1,15 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs';
 import './globals.css';
+
+
 const roboto = Roboto({
   weight: '400',
   subsets: ['latin'],
@@ -18,10 +27,22 @@ export default function RootLayout ({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className='h-full'>
-      <body className={`${roboto.className}, h-full`}>
-        {children}
-      </body>
-    </html>
+		<ClerkProvider>
+			<html lang='en' className='h-full'>
+				<body className={`${roboto.className}, h-full`}>
+				<header>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </header>
+          <main>
+            {children}
+          </main>
+				</body>
+			</html>
+		</ClerkProvider>
   );
 }
