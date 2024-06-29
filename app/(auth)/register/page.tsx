@@ -14,7 +14,7 @@ const Register = () => {
                 type="text"
                 id="name"
                 placeholder="Your Name"
-								required
+                required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
@@ -25,7 +25,7 @@ const Register = () => {
                 type="email"
                 id="email"
                 placeholder="your@email.com"
-								required
+                required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
@@ -36,7 +36,7 @@ const Register = () => {
                 type="password"
                 id="password"
                 placeholder="Password"
-								required
+                required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
@@ -47,7 +47,7 @@ const Register = () => {
                 type="password"
                 id="confirm-password"
                 placeholder="Password"
-								required
+                required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>

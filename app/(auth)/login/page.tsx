@@ -7,8 +7,6 @@ const Login = () => {
     e.preventDefault();
     //Add form submission logic here
   };
-
-
   return (
     <div className="w-full flex flex-wrap">
       <div className="w-full md:w-1/2 flex flex-col">
@@ -20,7 +18,7 @@ const Login = () => {
               <input
                 type="email"
                 id="email"
-								required
+                required
                 placeholder="your@email.com"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
@@ -32,11 +30,10 @@ const Login = () => {
                 type="password"
                 id="password"
                 placeholder="Password"
-								required
+                required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
-
             <input
               type="submit"
               value="Log In"
