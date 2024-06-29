@@ -24,15 +24,16 @@ const Form = () => {
     picture: '', // Added for picture state
     liked: false,
     available: true,
-    ownerId: '64243b6a-2c1b-4277-b77f-0cf29fe39109', // Replace with the actual user ID
+    ownerId: '438088e9-19de-45f9-8eec-9ebbce2c0678', // Replace with the actual user ID
     id: uuidv4(),
     reviews: [],
     toolCategoryId: '',
-    toolrequests: []
+    toolrequests: [],
+    wishlists: []
 
   });
   const [categories, setCategories] = useState<ToolCategory[]>([]);
-  const [image, setImage] = useState<File | null>(null); // State to store the selected image file
+  //const [image, setImage] = useState<File | null>(null); // State to store the selected image file
   const router= useRouter();
   useEffect(() => {
     const fetchCategory = async () => {
@@ -67,7 +68,6 @@ const Form = () => {
     }));
   };
 
-
   const handleSelectChange = (name: string, value: string) => {
     setInput((prevData) => ({ ...prevData, [name]: value }));
   };
@@ -78,9 +78,7 @@ const Form = () => {
       try {
         const storageRef = ref(storage, `files/${file.name}`);
         const uploadTask = uploadBytesResumable(storageRef, file);
-
         await uploadTask;
-
         const mediaUrl = await getDownloadURL(uploadTask.snapshot.ref);
         console.log('Firebase MediaURL', mediaUrl);
 
@@ -89,7 +87,7 @@ const Form = () => {
           picture: mediaUrl,
         }));
 
-        setImage(file); // Set the file to state for later use if needed
+        // setImage(file); // Set the file to state for later use if needed
 
       } catch (error) {
         console.error('Error uploading file:', error);
@@ -128,11 +126,12 @@ const Form = () => {
         monthlyRate: 0,
         liked: false,
         available: true,
-        ownerId: '64243b6a-2c1b-4277-b77f-0cf29fe39109', // Replace with the actual 
+        ownerId: '438088e9-19de-45f9-8eec-9ebbce2c0678', // Replace with the actual 
         id: uuidv4(),
         reviews: [],
         toolCategoryId: '',
-        toolrequests: []
+        toolrequests: [],
+        wishlists: []
       });
       router.push('/rented');
     } catch (error) {

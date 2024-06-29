@@ -274,7 +274,7 @@ async function main () {
   }
 
   for (const toolrequest of toolrequests) {
-    await prisma.toolrequest.create({
+    await prisma.toolRequest.create({
       data: {
         id: toolrequest.id,
         status: toolrequest.status,
