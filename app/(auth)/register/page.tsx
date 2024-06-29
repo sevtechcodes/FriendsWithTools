@@ -2,6 +2,7 @@
 import Link from 'next/link';
 
 const Register = () => {
+	
   return (
     <div className="w-full flex flex-wrap">
       <div className="w-full md:w-1/2 flex flex-col">

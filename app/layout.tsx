@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import {
   ClerkProvider,
+  SignIn,
   SignInButton,
   SignedIn,
   SignedOut,
@@ -30,16 +31,8 @@ export default function RootLayout ({
 		<ClerkProvider>
 			<html lang='en' className='h-full'>
 				<body className={`${roboto.className}, h-full`}>
-				<header>
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </header>
           <main>
-            {children}
+            	{children}
           </main>
 				</body>
 			</html>

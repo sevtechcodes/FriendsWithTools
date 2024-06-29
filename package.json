@@ -13,6 +13,7 @@
     "prisma:migrate": "prisma migrate dev --dotenv .env.local"
   },
   "dependencies": {
+    "@clerk/elements": "^0.9.1",
     "@clerk/nextjs": "^5.1.6",
     "@heroicons/react": "^2.1.4",
     "@prisma/client": "^5.15.1",
@@ -39,6 +40,7 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
+    "@clerk/types": "^4.6.1",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
     "@types/node": "20.14.8",

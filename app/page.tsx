@@ -5,7 +5,7 @@ export default async function Home () {
   return (
     <main>
       <div>
-			 {redirect('/login')};
+			 {redirect('/sign-in')};
       </div>
     </main>
   );
