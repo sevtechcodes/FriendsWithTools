@@ -5,6 +5,7 @@ import { ToolCard } from '../../lib/types';
 import ToolCardComponent from '../../components/ToolCard';
 import uniqBy from 'lodash/uniqBy';
 
+
 const ToolsPage = ({
   searchParams,
 }: {
@@ -18,6 +19,8 @@ const ToolsPage = ({
   const [favTools, setFavTools] = useState<ToolCard[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const query = searchParams?.query || '';
+
+
 
   useEffect(() => {
     const fetchAllTools = async () => {

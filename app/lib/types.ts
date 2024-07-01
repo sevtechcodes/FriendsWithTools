@@ -2,11 +2,11 @@
 
 export type User = {
   id: string;
+  clerkId: string;
+  username: string;
   name: string;
   lastName: string;
   email: string;
-  password: string;
-  profilePicture?: string | null;
   conversations: Conversation[];
   reviews: ToolsReviews[];
   listings: ToolCard[];
